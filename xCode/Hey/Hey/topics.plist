@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>item</key>
+	<array>
+		<string>Awareness</string>
+		<string>Art</string>
+		<string>Police Service</string>
+		<string>Fire</string>
+		<string>People</string>
+		<string>Funny</string>
+		<string>Roads</string>
+		<string>Accidents</string>
+		<string>Human Rights</string>
+		<string>Politics</string>
+		<string>Traffic</string>
+		<string>Housing</string>
+		<string>Design</string>
+		<string>Health &amp; Fitness</string>
+		<string>History</string>
+		<string>Humor</string>
+		<string>Fashion</string>
+		<string>Quotes</string>
+		<string>Technology</string>
+		<string>Weddings</string>
+		<string>Nature</string>
+		<string>Science</string>
+		<string>Sports</string>
+		<string>Vehicle</string>
+		<string>Education</string>
+		<string>Hair &amp; Beauty</string>
+		<string>Holidays &amp; Events</string>
+		<string>Home Decor</string>
+		<string>Kids</string>
+		<string>Travel</string>
+		<string>Food</string>
+		<string>Others</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Hey": {
+            "applicationId": "MH2YONJGtxloROfWUNMEOqgdMCHFHvdbXKXmF0Sp", 
+            "masterKey": "Rw69E3nAN9GVeIMYss3ediL0EengYrTxUEgVW82k"
+        }, 
+        "_default": {
+            "link": "Hey"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.1.8"
+    }
+}
