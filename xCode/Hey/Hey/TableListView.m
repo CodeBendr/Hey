@@ -141,6 +141,8 @@
         }
     }];
     
+    [listViewCell.txtCaption setFont:[UIFont fontWithName:@"Lato" size:26]];
+    
     
     //text information related to list object
     listViewCell.txtCaption.text = [object objectForKey:@"caption"];

@@ -17,6 +17,7 @@
     if (self) {
         // Initialization code
       //  imgThumb.layer.cornerRadius = 9.0;
+      
         
     }
     return self;
