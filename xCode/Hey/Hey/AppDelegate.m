@@ -22,13 +22,14 @@
     
       [Parse setApplicationId:@"MH2YONJGtxloROfWUNMEOqgdMCHFHvdbXKXmF0Sp" clientKey:@"oQFGK1RFp7Ij5X2YTBrZUH0ZR3k4IQ9gwmS9sPe8"];
     
+    //set general application defaults
     [[UIBarButtonItem appearance] setTintColor:[UIColor blackColor]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navi_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolBar.png"] forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
     
     [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:@"toolBar.png"]];
-
+    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];

@@ -13,6 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgThumb;
 @property (weak, nonatomic) IBOutlet UILabel *txtCaption;
+@property (weak, nonatomic) IBOutlet UILabel *txtTime;
+@property (weak, nonatomic) IBOutlet UILabel *txtUsername;
+@property (weak, nonatomic) IBOutlet UILabel *txtType;
+@property (weak, nonatomic) IBOutlet UILabel *txtLocation;
 
 
 @end

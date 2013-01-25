@@ -18,21 +18,7 @@
 			   
 			  document.writeln(results[r].caption + "  " + results[r].category + " " + results[r].location + "<br><br>") ;
 			 
-			 			
-		Parse.Cloud.run("Coder",{},{
-			success:function(user){
-			  
-			document.writeln(Parse.User.current().getUsername()) ;
-			 
-			  },
-		   error:function(e){
-			   
-			   document.writeln(e.message);
-			   
-			   }
-			
-			
-			})	   
+		   
 			 
 			   
 			   },

@@ -13,9 +13,6 @@
 #import "MediaViewController.h"
 #import "UIImage+ResizeAdditions.h"
 
-static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.php";
-
-
 @interface PostViewController ()
 
 @property (nonatomic,strong) NSMutableData *receivedData;
@@ -23,7 +20,7 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 @end
 
 @implementation PostViewController
-@synthesize imgPost;
+/*@synthesize imgPost;
 @synthesize viewChild;
 @synthesize imgBckGrnd;
 @synthesize txtPost;
@@ -31,12 +28,13 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 @synthesize txtCategory;
 @synthesize blink;
 @synthesize viewIndicator;
-@synthesize locationController;
-@synthesize categoryController;
 @synthesize stringLat;
 @synthesize stringLon;
 @synthesize viewRequestProcess;
-@synthesize receivedData;
+@synthesize receivedData; */
+
+@synthesize locationController;
+@synthesize categoryController;
 
 - (void)blinkIndicator{
     
@@ -69,27 +67,34 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    viewIndicator.layer.cornerRadius = 8.0;
+   // self.viewIndicator.layer.cornerRadius = 8.0;
     
-     blink = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(blinkIndicator) userInfo:nil repeats:YES];
+     self.blink = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(blinkIndicator) userInfo:nil repeats:YES];
     
   //  [txtPost becomeFirstResponder];
+    
+    
+    //configure fonts for view
+     [self.txtLocation setFont:[UIFont fontWithName:@"Lato-Light" size:35]];
+     [self.txtPost setFont:[UIFont fontWithName:@"Lato-Light" size:35]];
+     [self.txtCategory setFont:[UIFont fontWithName:@"Lato-Light" size:18]];
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    if(locationController.stringLocation != nil){
+    if(self.locationController.stringLocation != nil){
         
-        txtLocation.text =  locationController.stringLocation;
-        stringLat = locationController.stringLat;
-        stringLon = locationController.stringLon;
+        self.txtLocation.text =  self.locationController.stringLocation;
+        self.stringLat = self.locationController.stringLat;
+        self.stringLon = self.locationController.stringLon;
     }
     
-    if(categoryController.stringCategory != nil){
+    if(self.categoryController.stringCategory != nil){
         
-        txtCategory.text = categoryController.stringCategory;
+      //  self.txtCategory.textColor = [UIColor colorWithRed:12 green:160 blue:203 alpha:0.0f];
+        self.txtCategory.text      = self.categoryController.stringCategory;
         
     }
     
@@ -122,17 +127,15 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 }
 
 
-
-
 - (IBAction)sendPostToServer:(id)sender {
     
-    if([txtPost.text length] != 0 && [txtLocation.text length] != 0 && [txtCategory.text length] != 0
-      && ![txtLocation.text isEqualToString:@"Find Location" ] && ![txtLocation.text isEqualToString:@"Searching" ] &&  ![txtCategory.text isEqualToString:@"Choose Category"]
+    if([self.txtPost.text length] != 0 && [self.txtLocation.text length] != 0 && [self.txtCategory.text length] != 0
+      && ![self.txtLocation.text isEqualToString:@"Find Location" ] && ![self.txtLocation.text isEqualToString:@"Searching" ] &&  ![self.txtCategory.text isEqualToString:@"Choose Category"]
       && self.imgPost.image != nil){
         
         
         UIImage *resizedImage = [self.imgPost.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
-        UIImage *thumbnailImage = [self.imgPost.image thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
+        UIImage *thumbnailImage = [self.imgPost.image thumbnailImage:99.0f transparentBorder:0.0f cornerRadius:0.0f interpolationQuality:kCGInterpolationDefault];
         
         // JPEG to decrease file size and enable faster uploads & downloads
         NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
@@ -166,12 +169,12 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
                 PFUser *user = [PFUser currentUser];
                 [uploadMedia setObject:user forKey:@"postedBy"];
                 
-                [uploadMedia setObject:txtPost.text      forKey:@"caption"];
-                [uploadMedia setObject:txtCategory.text  forKey:@"category"];
-                [uploadMedia setObject:txtLocation.text  forKey:@"location"];
-                [uploadMedia setObject:stringLat         forKey:@"latitude"];
-                [uploadMedia setObject:stringLon         forKey:@"longitude"];
-                [uploadMedia setObject:@"type"           forKey:@"picture"];
+                [uploadMedia setObject:self.txtPost.text      forKey:@"caption"];
+                [uploadMedia setObject:self.txtCategory.text  forKey:@"category"];
+                [uploadMedia setObject:self.txtLocation.text  forKey:@"location"];
+                [uploadMedia setObject:self.stringLat         forKey:@"latitude"];
+                [uploadMedia setObject:self.stringLon         forKey:@"longitude"];
+                [uploadMedia setObject:@"picture"           forKey:@"type"];
                 
                  PFFile *thumbnailFile = [PFFile fileWithName:@"thumb" data:thumbnailImageData];
                 [uploadMedia setObject:thumbnailFile forKey:@"thumbnail"];
@@ -189,19 +192,20 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
                             
                             }else{
                             
+                                // Log details of the failure
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Upload Image" message:@"Hey! couldn't upload image at this time the connection to the server filed" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+                                
+                                 [alert show];
+                             }
                             
-                            
-                            }
-                            
-                            
-                        }];
-                        
-                       
+                         }];
                         
                     }else{
                         
                         // Log details of the failure
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Upload Image" message:@"Hey! couldn't upload image at this time" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+                        
+                        [alert show];
                         
                     }
                 }];
@@ -234,18 +238,18 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 
 - (IBAction)showCategories:(id)sender {
     
-     [UIView transitionWithView:viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
+     [UIView transitionWithView:self.viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
         
-         viewChild.frame = CGRectMake(0, -44, 320, 460);
-         imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
+         self.viewChild.frame = CGRectMake(0, -44, 320, 460);
+         self.imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
     
     } completion:^(BOOL finished){
     
-        [txtPost resignFirstResponder];
+        [self.txtPost resignFirstResponder];
         
-        viewIndicator.frame = CGRectMake(23, 248, 16, 16);
+        self.viewIndicator.frame = CGRectMake(22, 240, 7, 9);
         
-        categoryController = [[CategoryViewController alloc]  initWithNibName:@"CategoryViewController" bundle:nil];
+         categoryController = [[CategoryViewController alloc]  initWithNibName:@"CategoryViewController" bundle:nil];
         
         [self.navigationController pushViewController:categoryController animated:YES];
     
@@ -256,16 +260,16 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 
 - (IBAction)showLocation:(id)sender {
     
-    [UIView transitionWithView:viewChild duration:0.1 options:UIViewAnimationCurveLinear animations:^(void){
+    [UIView transitionWithView:self.viewChild duration:0.1 options:UIViewAnimationCurveLinear animations:^(void){
         
-         viewChild.frame = CGRectMake(0, -44, 320, 460);
-        imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
+        self.viewChild.frame = CGRectMake(0, -44, 320, 460);
+        self.imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
         
     } completion:^(BOOL finished){
     
-        [txtPost resignFirstResponder];
+        [self.txtPost resignFirstResponder];
         
-        viewIndicator.frame = CGRectMake(23, 288, 16, 16);
+        self.viewIndicator.frame = CGRectMake(20, 280, 9, 9);
         
         if([CLLocationManager locationServicesEnabled]){
             
@@ -280,15 +284,15 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
                    
                 }
                 
-                 txtLocation.text = @"Searching";
+                 self.txtLocation.text = @"Searching";
                 [_locationManager startUpdatingLocation];
 
             }
             
         }else{
             
-            locationController  = [[LocationViewController alloc]  initWithNibName:@"LocationViewController" bundle:nil];
-            [self.navigationController pushViewController:locationController animated:YES];
+            self.locationController  = [[LocationViewController alloc]  initWithNibName:@"LocationViewController" bundle:nil];
+            [self.navigationController pushViewController:self.locationController animated:YES];
             [_locationManager stopUpdatingLocation];
         }
        
@@ -303,15 +307,15 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
     
-    [UIView transitionWithView:viewChild duration:0.1 options:UIViewAnimationCurveLinear animations:^(void){
+    [UIView transitionWithView:self.viewChild duration:0.1 options:UIViewAnimationCurveLinear animations:^(void){
         
         CGRect anim      = CGRectMake(0, -140, 320, 460);
-        viewChild.frame  = anim;
-        imgBckGrnd.frame = CGRectMake(0, -140, 320, 460);
+        self.viewChild.frame  = anim;
+        self.imgBckGrnd.frame = CGRectMake(0, -140, 320, 460);
         
     } completion:nil];
     
-     viewIndicator.frame = CGRectMake(23, 210, 16, 16);   
+     self.viewIndicator.frame = CGRectMake(23, 210, 7, 9);
         
 }
 
@@ -319,10 +323,10 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
     
     [textField resignFirstResponder];
     
-    [UIView transitionWithView:viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
+    [UIView transitionWithView:self.viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
         
-         viewChild.frame = CGRectMake(0, -44, 320, 460);
-        imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
+        self.viewChild.frame = CGRectMake(0, -44, 320, 460);
+        self.imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
         
     } completion:nil];
     
@@ -338,12 +342,12 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 
 - (IBAction)removeKeyboardOnBckGrnd:(id)sender{
     
-    [txtPost resignFirstResponder];
+    [self.txtPost resignFirstResponder];
     
-    [UIView transitionWithView:viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
+    [UIView transitionWithView:self.viewChild duration:0.2 options:UIViewAnimationCurveLinear animations:^(void){
         
-         viewChild.frame = CGRectMake(0, -44, 320, 460);
-        imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
+        self.viewChild.frame = CGRectMake(0, -44, 320, 460);
+        self.imgBckGrnd.frame = CGRectMake(0, -44, 320, 460);
         
     } completion:nil];
     
@@ -359,7 +363,7 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
     // redirect, so each time we reset the data.
     
     // receivedData is an instance variable declared elsewhere.
-    [receivedData setLength:0];
+    [self.receivedData setLength:0];
      // NSLog(@"image data length %@",response);
 }
 
@@ -367,14 +371,14 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 {
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
-    [receivedData appendData:data];
-    [viewRequestProcess setHidden:YES];
+    [self.receivedData appendData:data];
+    [self.viewRequestProcess setHidden:YES];
     
    // NSString *stringData= [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]; 
     
     //parse out the json data
     NSError* error;
-    NSDictionary* jsonData = [NSJSONSerialization JSONObjectWithData:receivedData  options:kNilOptions error:&error];
+    NSDictionary* jsonData = [NSJSONSerialization JSONObjectWithData:self.receivedData  options:kNilOptions error:&error];
     
      NSString *stringData = [jsonData objectForKey:@"accessCode"];
      NSLog(@"accessCode %@",stringData);
@@ -417,7 +421,7 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
    
          // [self.presentingViewController.presentingViewController dismissModalViewControllerAnimated:YES];
         
-          [blink invalidate];
+          [self.blink invalidate];
         
      }
      
@@ -428,7 +432,7 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
     
     // inform the user
     
-    [viewRequestProcess setHidden:YES];
+    [self.viewRequestProcess setHidden:YES];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Fail Error" message:@"Server communication error. Please check your connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     
@@ -438,9 +442,9 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    if([receivedData length] == 0){
+    if([self.receivedData length] == 0){
         
-        [viewRequestProcess setHidden:YES];
+        [self.viewRequestProcess setHidden:YES];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Server communication error. Please check your connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
@@ -450,7 +454,7 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
     
     // do something with the data
     // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
     
     
 }
@@ -507,8 +511,8 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
                                 
                                 self.txtLocation.text = foundPlacemark.name;
                                 
-                              stringLat = [NSString stringWithFormat:@"%g",foundPlacemark.location.coordinate.latitude];
-                              stringLon = [NSString stringWithFormat:@"%g",foundPlacemark.location.coordinate.longitude];
+                              self.stringLat = [NSString stringWithFormat:@"%g",foundPlacemark.location.coordinate.latitude];
+                              self.stringLon = [NSString stringWithFormat:@"%g",foundPlacemark.location.coordinate.longitude];
                                 
                             }else if(error.code == kCLErrorGeocodeCanceled){
                                 
@@ -518,8 +522,8 @@ static NSString   *kmediaProcessURL = @"http://evansdomina.com/API/mediaProcess.
                                 
                             }else if(error.code == kCLErrorGeocodeFoundNoResult){
                                 
-                             locationController  = [[LocationViewController alloc]  initWithNibName:@"LocationViewController" bundle:nil];
-                             [self.navigationController pushViewController:locationController animated:YES];
+                             self.locationController  = [[LocationViewController alloc]  initWithNibName:@"LocationViewController" bundle:nil];
+                             [self.navigationController pushViewController:self.locationController animated:YES];
                                 
                             }else if(error.code == kCLErrorGeocodeFoundPartialResult){
                                 

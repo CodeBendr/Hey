@@ -8,6 +8,8 @@
 
 #import "TableListView.h"
 #import "ListViewCell.h"
+#import "ViewHelper.m"
+#import "DetailViewController.h"
 
 @interface TableListView ()
 
@@ -37,8 +39,8 @@
             
             // The number of objects to show per page
             self.objectsPerPage = 15;
+            
         }
-
 
     return self;
 }
@@ -47,6 +49,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.tableView setRowHeight:138];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +102,15 @@
     
     PFQuery *query = [PFQuery queryWithClassName:self.className];
     
+    // If Pull To Refresh is enabled, query against the network by default.
+    if (self.pullToRefreshEnabled) {
+        
+        query.cachePolicy = kPFCachePolicyNetworkOnly;
+    }
+    
+    //include keys
+   // [query includeKey:@"postedBy"];
+    
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     
@@ -107,14 +121,19 @@
     }
     
     
-    
+   [query orderByDescending:@"createdAt"];
+
     return query;
 }
+
+
 
 
 // Override to customize the look of a cell representing an object. The default is to display
 // a UITableViewCellStyleDefault style cell with the label being the first key in the object.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    
+   [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     static NSString *CellIdentifier = @"ListCell";
     
@@ -128,6 +147,7 @@
     }
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     //configure cell
     ListViewCell *listViewCell = (ListViewCell*)cell;
@@ -135,17 +155,50 @@
     PFFile *thumb = [object objectForKey:@"thumbnail"];
     [thumb getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
-           
-             listViewCell.imgThumb.image = [UIImage imageWithData:data];
+            
             // image can now be set on a UIImageView
+            listViewCell.imgThumb.image = [UIImage imageWithData:data];
+            
+            //animate the logo and the intro text
+            [UIView animateWithDuration:0.5
+                                  delay:1.0
+                                options: UIViewAnimationCurveEaseOut
+                             animations:^{
+                                 
+                               [listViewCell.imgThumb setAlpha:1.0f];
+                                 
+                             } 
+                             completion:nil];
         }
     }];
     
-    [listViewCell.txtCaption setFont:[UIFont fontWithName:@"Lato" size:26]];
+    [listViewCell.txtCaption setFont:[UIFont fontWithName:@"Lato-Light" size:26]];
+    [listViewCell.txtTime setFont:[UIFont fontWithName:@"Lato-Regular" size:9]];
+    [listViewCell.txtUsername setFont:[UIFont fontWithName:@"Lato-Regular" size:11.5]];
+    [listViewCell.txtType setFont:[UIFont fontWithName:@"Lato-Regular" size:11.5]];
+    [listViewCell.txtLocation setFont:[UIFont fontWithName:@"Lato-Regular" size:13]];
+
     
     
     //text information related to list object
-    listViewCell.txtCaption.text = [object objectForKey:@"caption"];
+    listViewCell.txtCaption.text  = [object objectForKey:@"caption"];
+    listViewCell.txtLocation.text = [object objectForKey:@"location"];
+    listViewCell.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"type"]];
+    
+  
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *date = [df stringFromDate:object.createdAt];
+    listViewCell.txtTime.text = [ViewHelper fuzzyTime:date];
+   
+    
+    PFObject *user = [object objectForKey:@"postedBy"];
+    
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        listViewCell.txtUsername.text = [user objectForKey:@"username"];
+        
+    }];
     
     return cell;
     
@@ -154,17 +207,41 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    DetailViewController *detail = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+    //UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:detail];
+     [self.navigationController pushViewController:detail animated:YES];
     
-}
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    
+    PFFile *thumb = [object objectForKey:@"file"];
+    [thumb getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            
+            // image can now be set on a UIImageView
+            detail.imgDetail.image = [UIImage imageWithData:data];
+            
+            //animate the logo and the intro text
+            [UIView animateWithDuration:0.5
+                                  delay:1.0
+                                options: UIViewAnimationCurveEaseOut
+                             animations:^{
+                                 
+                                 [detail.imgDetail setAlpha:1.0f];
+                                 
+                             }
+                            completion:nil];
+                           }
+                        }];
+                      }
 
 
 
 //enable table editing
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 131;
     
-}
+}*/
 
 
 @end

@@ -16,7 +16,7 @@
 @end
 
 @implementation MediaViewController
-@synthesize chooseAudio;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +35,7 @@
 
 - (void)viewDidUnload
 {
-    [self setChooseAudio:nil];
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -55,11 +55,6 @@
     [actionSheet showInView:self.view];
 }
 
-- (IBAction)chooseVideo:(id)sender{
-    
-   
-    
-}
 
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

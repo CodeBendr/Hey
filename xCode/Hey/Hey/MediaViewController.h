@@ -11,7 +11,12 @@
 @interface MediaViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 
 - (IBAction)choosePicture:(id)sender;
-- (IBAction)chooseVideo:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *chooseAudio;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *txtDesc;
+@property (weak, nonatomic) IBOutlet UILabel *txtImageLabel;
+
 - (IBAction)closeMediaView:(id)sender;
+
+
 @end

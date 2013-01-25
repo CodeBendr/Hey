@@ -103,6 +103,15 @@
 		A8032379163E6768003CBE39 /* ListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8032377163E6768003CBE39 /* ListViewCell.m */; };
 		A8032393163E88D2003CBE39 /* TableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8032392163E88D2003CBE39 /* TableListView.m */; };
 		A8032395163E8E37003CBE39 /* TableListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8032394163E8E36003CBE39 /* TableListView.xib */; };
+		A828840A16ABA29700B97FB2 /* barView.png in Resources */ = {isa = PBXBuildFile; fileRef = A828840816ABA29700B97FB2 /* barView.png */; };
+		A828840B16ABA29700B97FB2 /* barView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A828840916ABA29700B97FB2 /* barView@2x.png */; };
+		A874271D16B08FE6007FF90F /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A874271C16B08FE6007FF90F /* NSDate-Utilities.m */; };
+		A874272916B12266007FF90F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A874272716B12266007FF90F /* DetailViewController.m */; };
+		A874272A16B12266007FF90F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A874272816B12266007FF90F /* DetailViewController.xib */; };
+		A874272D16B12472007FF90F /* detailViewWithPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = A874272B16B12472007FF90F /* detailViewWithPicture.png */; };
+		A874272E16B12472007FF90F /* detailViewWithPicture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A874272C16B12472007FF90F /* detailViewWithPicture@2x.png */; };
+		A874273416B12ECA007FF90F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A874273316B12ECA007FF90F /* MessageUI.framework */; };
+		A874273616B12EE6007FF90F /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A874273516B12EE6007FF90F /* Twitter.framework */; };
 		A883DB3916AB01F8005BF802 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB2F16AB01F8005BF802 /* Lato-Black.ttf */; };
 		A883DB3A16AB01F8005BF802 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB3016AB01F8005BF802 /* Lato-BlackItalic.ttf */; };
 		A883DB3B16AB01F8005BF802 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB3116AB01F8005BF802 /* Lato-Bold.ttf */; };
@@ -236,6 +245,18 @@
 		A8032391163E88D2003CBE39 /* TableListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableListView.h; sourceTree = "<group>"; };
 		A8032392163E88D2003CBE39 /* TableListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableListView.m; sourceTree = "<group>"; };
 		A8032394163E8E36003CBE39 /* TableListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableListView.xib; sourceTree = "<group>"; };
+		A828840816ABA29700B97FB2 /* barView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = barView.png; path = ../../../PNG/Assets/barView.png; sourceTree = "<group>"; };
+		A828840916ABA29700B97FB2 /* barView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barView@2x.png"; path = "../../../PNG/Assets/barView@2x.png"; sourceTree = "<group>"; };
+		A874271B16B08FE6007FF90F /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		A874271C16B08FE6007FF90F /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
+		A874272416B090C8007FF90F /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
+		A874272616B12265007FF90F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		A874272716B12266007FF90F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A874272816B12266007FF90F /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		A874272B16B12472007FF90F /* detailViewWithPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = detailViewWithPicture.png; path = ../../../PNG/Assets/detailViewWithPicture.png; sourceTree = "<group>"; };
+		A874272C16B12472007FF90F /* detailViewWithPicture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "detailViewWithPicture@2x.png"; path = "../../../PNG/Assets/detailViewWithPicture@2x.png"; sourceTree = "<group>"; };
+		A874273316B12ECA007FF90F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A874273516B12EE6007FF90F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		A883DB2F16AB01F8005BF802 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Black.ttf"; path = "../../../Fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
 		A883DB3016AB01F8005BF802 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-BlackItalic.ttf"; path = "../../../Fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A883DB3116AB01F8005BF802 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../../../Fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -255,6 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A874273616B12EE6007FF90F /* Twitter.framework in Frameworks */,
+				A874273416B12ECA007FF90F /* MessageUI.framework in Frameworks */,
 				A803228416392443003CBE39 /* CoreLocation.framework in Frameworks */,
 				A803224616385BB8003CBE39 /* AdSupport.framework in Frameworks */,
 				A803224416385BAC003CBE39 /* StoreKit.framework in Frameworks */,
@@ -280,6 +303,8 @@
 		A80321B416385492003CBE39 = {
 			isa = PBXGroup;
 			children = (
+				A874273516B12EE6007FF90F /* Twitter.framework */,
+				A874273316B12ECA007FF90F /* MessageUI.framework */,
 				A80321C916385492003CBE39 /* Hey */,
 				A80321C216385492003CBE39 /* Frameworks */,
 				A80321C016385492003CBE39 /* Products */,
@@ -365,6 +390,9 @@
 		A80321F916385544003CBE39 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A874272616B12265007FF90F /* DetailViewController.h */,
+				A874272716B12266007FF90F /* DetailViewController.m */,
+				A874272816B12266007FF90F /* DetailViewController.xib */,
 				A8032370163E6727003CBE39 /* ListViewController.h */,
 				A8032371163E6728003CBE39 /* ListViewController.m */,
 				A8032372163E672A003CBE39 /* ListViewController.xib */,
@@ -387,6 +415,10 @@
 		A8032204163855FB003CBE39 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A874272B16B12472007FF90F /* detailViewWithPicture.png */,
+				A874272C16B12472007FF90F /* detailViewWithPicture@2x.png */,
+				A828840816ABA29700B97FB2 /* barView.png */,
+				A828840916ABA29700B97FB2 /* barView@2x.png */,
 				A883DB4816AB0A20005BF802 /* listViewCell.png */,
 				A883DB4916AB0A20005BF802 /* listViewCell@2x.png */,
 				A8032385163E7FC4003CBE39 /* btnListGlobal.png */,
@@ -496,6 +528,7 @@
 		A8032322163A9B27003CBE39 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A874271F16B08FEA007FF90F /* NSDate */,
 				A883DB4316AB05A6005BF802 /* UIFont */,
 				A803232C163A9B42003CBE39 /* UIImage */,
 			);
@@ -523,6 +556,16 @@
 				A8032392163E88D2003CBE39 /* TableListView.m */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		A874271F16B08FEA007FF90F /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				A874271B16B08FE6007FF90F /* NSDate-Utilities.h */,
+				A874271C16B08FE6007FF90F /* NSDate-Utilities.m */,
+				A874272416B090C8007FF90F /* ViewHelper.m */,
+			);
+			name = NSDate;
 			sourceTree = "<group>";
 		};
 		A883DB2E16AAFA9E005BF802 /* Fonts */ = {
@@ -674,6 +717,11 @@
 				A883DB4216AB01F8005BF802 /* Lato-Regular.ttf in Resources */,
 				A883DB4A16AB0A20005BF802 /* listViewCell.png in Resources */,
 				A883DB4B16AB0A20005BF802 /* listViewCell@2x.png in Resources */,
+				A828840A16ABA29700B97FB2 /* barView.png in Resources */,
+				A828840B16ABA29700B97FB2 /* barView@2x.png in Resources */,
+				A874272A16B12266007FF90F /* DetailViewController.xib in Resources */,
+				A874272D16B12472007FF90F /* detailViewWithPicture.png in Resources */,
+				A874272E16B12472007FF90F /* detailViewWithPicture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +750,8 @@
 				A8032373163E672D003CBE39 /* ListViewController.m in Sources */,
 				A8032379163E6768003CBE39 /* ListViewCell.m in Sources */,
 				A8032393163E88D2003CBE39 /* TableListView.m in Sources */,
+				A874271D16B08FE6007FF90F /* NSDate-Utilities.m in Sources */,
+				A874272916B12266007FF90F /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

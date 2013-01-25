@@ -24,21 +24,22 @@
     
 }
 
-@property (strong, nonatomic) IBOutlet UIImageView *imgPost;
-@property (strong, nonatomic) IBOutlet UIView *viewChild;
-@property (strong, nonatomic) IBOutlet UIImageView *imgBckGrnd;
-@property (strong, nonatomic) IBOutlet UITextField *txtPost;
-@property (strong, nonatomic) IBOutlet UILabel *txtLocation;
-@property (strong, nonatomic) IBOutlet UILabel *txtCategory;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPost;
+@property (weak, nonatomic) IBOutlet UIView *viewChild;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBckGrnd;
+@property (weak, nonatomic) IBOutlet UITextField *txtPost;
+@property (weak, nonatomic) IBOutlet UILabel *txtLocation;
+@property (weak, nonatomic) IBOutlet UILabel *txtCategory;
 @property (copy, nonatomic) NSString *stringLat;
 @property (copy, nonatomic) NSString *stringLon;
-@property (strong, nonatomic) IBOutlet UIView *viewRequestProcess;
+@property (weak, nonatomic) IBOutlet UIView *viewRequestProcess;
 
 @property (strong, nonatomic) LocationViewController *locationController;
 @property (strong, nonatomic) CategoryViewController *categoryController;
 
-@property (strong, nonatomic) IBOutlet UIView *viewIndicator;
-@property (strong, nonatomic) NSTimer *blink;
+@property (weak, nonatomic) IBOutlet UIView *viewIndicator;
+@property (weak, nonatomic) NSTimer *blink;
+
 - (IBAction)sendPostToServer:(id)sender;
 
 - (IBAction)showCategories:(id)sender;

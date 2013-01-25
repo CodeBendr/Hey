@@ -1,0 +1,317 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jitsu', '-g' ]
+2 info using npm@1.1.49
+3 info using node@v0.8.7
+4 verbose read json /usr/local/lib/package.json
+5 verbose read json /usr/local/lib/package.json
+6 verbose cache add [ 'jitsu', null ]
+7 silly cache add name=undefined spec="jitsu" args=["jitsu",null]
+8 verbose parsed url { pathname: 'jitsu', path: 'jitsu', href: 'jitsu' }
+9 silly lockFile 9d81e68b-jitsu jitsu
+10 verbose lock jitsu /Users/CodeBender/.npm/9d81e68b-jitsu.lock
+11 silly lockFile 9d81e68b-jitsu jitsu
+12 verbose addNamed [ 'jitsu', '' ]
+13 verbose addNamed [ null, '' ]
+14 silly lockFile e680b62f-jitsu jitsu@
+15 verbose lock jitsu@ /Users/CodeBender/.npm/e680b62f-jitsu.lock
+16 silly addNameRange { name: 'jitsu', range: '', hasData: false }
+17 verbose url raw jitsu
+18 verbose url resolving [ 'https://registry.npmjs.org/', './jitsu' ]
+19 verbose url resolved https://registry.npmjs.org/jitsu
+20 info retry registry request attempt 1 at 11:21:43
+21 http GET https://registry.npmjs.org/jitsu
+22 http 200 https://registry.npmjs.org/jitsu
+23 silly registry.get cb [ 200,
+23 silly registry.get   { vary: 'Accept',
+23 silly registry.get     server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+23 silly registry.get     etag: '"191K06DTLKWW2ZRR20ZGI54XN"',
+23 silly registry.get     date: 'Sun, 20 Jan 2013 11:20:47 GMT',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     'content-length': '419311' } ]
+24 silly addNameRange number 2 { name: 'jitsu', range: '', hasData: true }
+25 silly addNameRange versions [ 'jitsu',
+25 silly addNameRange   [ '0.4.14',
+25 silly addNameRange     '0.4.15',
+25 silly addNameRange     '0.4.16',
+25 silly addNameRange     '0.5.0',
+25 silly addNameRange     '0.5.0-1',
+25 silly addNameRange     '0.6.0',
+25 silly addNameRange     '0.6.1',
+25 silly addNameRange     '0.6.1-1',
+25 silly addNameRange     '0.6.2',
+25 silly addNameRange     '0.6.3',
+25 silly addNameRange     '0.7.0',
+25 silly addNameRange     '0.7.0-1',
+25 silly addNameRange     '0.7.0-2',
+25 silly addNameRange     '0.7.1',
+25 silly addNameRange     '0.7.2',
+25 silly addNameRange     '0.7.2-1',
+25 silly addNameRange     '0.7.3',
+25 silly addNameRange     '0.7.4',
+25 silly addNameRange     '0.7.4-1',
+25 silly addNameRange     '0.7.5',
+25 silly addNameRange     '0.7.6',
+25 silly addNameRange     '0.7.6-1',
+25 silly addNameRange     '0.7.7',
+25 silly addNameRange     '0.7.7-1',
+25 silly addNameRange     '0.7.7-2',
+25 silly addNameRange     '0.7.100',
+25 silly addNameRange     '0.8.0',
+25 silly addNameRange     '0.8.1',
+25 silly addNameRange     '0.8.2',
+25 silly addNameRange     '0.8.2-1',
+25 silly addNameRange     '0.8.3',
+25 silly addNameRange     '0.8.4',
+25 silly addNameRange     '0.8.4-1',
+25 silly addNameRange     '0.8.5',
+25 silly addNameRange     '0.8.5-1',
+25 silly addNameRange     '0.8.6',
+25 silly addNameRange     '0.8.7',
+25 silly addNameRange     '0.8.8',
+25 silly addNameRange     '0.8.9',
+25 silly addNameRange     '0.9.0',
+25 silly addNameRange     '0.9.1',
+25 silly addNameRange     '0.9.2',
+25 silly addNameRange     '0.9.3',
+25 silly addNameRange     '0.9.4',
+25 silly addNameRange     '0.9.5',
+25 silly addNameRange     '0.9.6',
+25 silly addNameRange     '0.9.7',
+25 silly addNameRange     '0.9.8',
+25 silly addNameRange     '0.10.0',
+25 silly addNameRange     '0.10.1',
+25 silly addNameRange     '0.10.2',
+25 silly addNameRange     '0.10.3',
+25 silly addNameRange     '0.10.3-1',
+25 silly addNameRange     '0.10.3-2',
+25 silly addNameRange     '0.10.4',
+25 silly addNameRange     '0.10.5',
+25 silly addNameRange     '0.11.0',
+25 silly addNameRange     '0.11.1',
+25 silly addNameRange     '0.11.2',
+25 silly addNameRange     '0.11.3',
+25 silly addNameRange     '0.11.4',
+25 silly addNameRange     '0.11.5',
+25 silly addNameRange     '0.11.6' ] ]
+26 verbose addNamed [ 'jitsu', '0.11.6' ]
+27 verbose addNamed [ '0.11.6', '0.11.6' ]
+28 silly lockFile 40c3d46e-jitsu-0-11-6 jitsu@0.11.6
+29 verbose lock jitsu@0.11.6 /Users/CodeBender/.npm/40c3d46e-jitsu-0-11-6.lock
+30 silly lockFile a972cb97-npmjs-org-jitsu-jitsu-0-11-6-tgz https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz
+31 verbose lock https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz /Users/CodeBender/.npm/a972cb97-npmjs-org-jitsu-jitsu-0-11-6-tgz.lock
+32 verbose addRemoteTarball [ 'https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz',
+32 verbose addRemoteTarball   'ecfa9b1ae0727af0dc556f4679eeb5733ca8dede' ]
+33 info retry fetch attempt 1 at 11:23:25
+34 verbose fetch to= /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/tmp.tgz
+35 http GET https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz
+36 http 200 https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz
+37 silly shasum updated bytes 40960
+38 silly shasum updated bytes 40960
+39 silly shasum updated bytes 40960
+40 silly shasum updated bytes 40960
+41 silly shasum updated bytes 40960
+42 silly shasum updated bytes 40960
+43 silly shasum updated bytes 29994
+44 info shasum ecfa9b1ae0727af0dc556f4679eeb5733ca8dede
+44 info shasum /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/tmp.tgz
+45 verbose tar unpack /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/tmp.tgz
+46 silly lockFile 3d41d85b-4965-0-11926872073672712-package /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package
+47 verbose lock /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package /Users/CodeBender/.npm/3d41d85b-4965-0-11926872073672712-package.lock
+48 silly gunzTarPerm modes [ '777', '666' ]
+49 silly gunzTarPerm extractEntry package.json
+50 silly gunzTarPerm extractEntry .npmignore
+51 silly gunzTarPerm extractEntry README.md
+52 silly gunzTarPerm extractEntry .travis.yml
+53 silly gunzTarPerm extractEntry assets/jitsu.png
+54 silly gunzTarPerm extractEntry assets/login.png
+55 silly gunzTarPerm extractEntry bin/jitsu
+56 silly gunzTarPerm extractEntry lib/jitsu.js
+57 silly gunzTarPerm extractEntry lib/jitsu/alias.js
+58 silly gunzTarPerm extractEntry lib/jitsu/commands.js
+59 silly gunzTarPerm extractEntry lib/jitsu/completion.js
+60 silly gunzTarPerm extractEntry lib/jitsu/config.js
+61 silly gunzTarPerm extractEntry lib/jitsu/package.js
+62 silly gunzTarPerm extractEntry lib/jitsu/properties.js
+63 silly gunzTarPerm extractEntry lib/jitsu/usage.js
+64 silly gunzTarPerm extractEntry lib/jitsu/commands/apps.js
+65 silly gunzTarPerm extractEntry lib/jitsu/commands/databases.js
+66 silly gunzTarPerm extractEntry lib/jitsu/commands/env.js
+67 silly gunzTarPerm extractEntry lib/jitsu/commands/install.js
+68 silly gunzTarPerm extractEntry lib/jitsu/commands/logs.js
+69 silly gunzTarPerm extractEntry lib/jitsu/commands/package.js
+70 silly gunzTarPerm extractEntry lib/jitsu/commands/snapshots.js
+71 silly gunzTarPerm extractEntry lib/jitsu/commands/users.js
+72 silly gunzTarPerm extractEntry lib/jitsu/commands/wizard.js
+73 silly gunzTarPerm extractEntry lib/jitsu/common/index.js
+74 silly gunzTarPerm extractEntry lib/jitsu/common/logfile.js
+75 silly gunzTarPerm extractEntry stacks.api.nodejitsu.com.svg
+76 silly gunzTarPerm extractEntry test/commands/apps-test.js
+77 silly gunzTarPerm extractEntry test/commands/bad-test.js
+78 silly gunzTarPerm extractEntry test/commands/databases-test.js
+79 silly gunzTarPerm extractEntry test/commands/env-test.js
+80 silly gunzTarPerm extractEntry test/commands/logs-test.js
+81 silly gunzTarPerm extractEntry test/commands/no-colors-test.js
+82 silly gunzTarPerm extractEntry test/commands/package-test.js
+83 silly gunzTarPerm extractEntry test/commands/snapshots-test.js
+84 silly gunzTarPerm extractEntry test/commands/users-test.js
+85 silly gunzTarPerm extractEntry test/fixtures/dot-jitsuconf
+86 silly gunzTarPerm extractEntry test/fixtures/example-app/package.json
+87 silly gunzTarPerm extractEntry test/fixtures/example-app/server.js
+88 silly gunzTarPerm extractEntry test/fixtures/logged-out-jitsuconf
+89 silly gunzTarPerm extractEntry test/helpers/macros.js
+90 verbose read json /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package/package.json
+91 silly lockFile 3d41d85b-4965-0-11926872073672712-package /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package
+92 verbose from cache /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package/package.json
+93 verbose tar pack [ '/Users/CodeBender/.npm/jitsu/0.11.6/package.tgz',
+93 verbose tar pack   '/var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package' ]
+94 verbose tarball /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+95 verbose folder /var/folders/mb/wwny86c57db4z1_nfy46lmtw0000gn/T/npm-18043/1358681004965-0.11926872073672712/package
+96 silly lockFile 9bfea582-der-npm-jitsu-0-11-6-package-tgz /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+97 verbose lock /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz /Users/CodeBender/.npm/9bfea582-der-npm-jitsu-0-11-6-package-tgz.lock
+98 silly lockFile 9bfea582-der-npm-jitsu-0-11-6-package-tgz /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+99 silly lockFile 348af71a-eBender-npm-jitsu-0-11-6-package /Users/CodeBender/.npm/jitsu/0.11.6/package
+100 verbose lock /Users/CodeBender/.npm/jitsu/0.11.6/package /Users/CodeBender/.npm/348af71a-eBender-npm-jitsu-0-11-6-package.lock
+101 silly lockFile 348af71a-eBender-npm-jitsu-0-11-6-package /Users/CodeBender/.npm/jitsu/0.11.6/package
+102 verbose tar unpack /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+103 silly lockFile 348af71a-eBender-npm-jitsu-0-11-6-package /Users/CodeBender/.npm/jitsu/0.11.6/package
+104 verbose lock /Users/CodeBender/.npm/jitsu/0.11.6/package /Users/CodeBender/.npm/348af71a-eBender-npm-jitsu-0-11-6-package.lock
+105 silly gunzTarPerm modes [ '777', '666' ]
+106 silly gunzTarPerm extractEntry package.json
+107 silly gunzTarPerm extractEntry .npmignore
+108 silly gunzTarPerm extractEntry README.md
+109 silly gunzTarPerm extractEntry .travis.yml
+110 silly gunzTarPerm extractEntry assets/jitsu.png
+111 silly gunzTarPerm extractEntry assets/login.png
+112 silly gunzTarPerm extractEntry bin/jitsu
+113 silly gunzTarPerm extractEntry lib/jitsu.js
+114 silly gunzTarPerm extractEntry lib/jitsu/alias.js
+115 silly gunzTarPerm extractEntry lib/jitsu/commands.js
+116 silly gunzTarPerm extractEntry lib/jitsu/completion.js
+117 silly gunzTarPerm extractEntry lib/jitsu/config.js
+118 silly gunzTarPerm extractEntry lib/jitsu/package.js
+119 silly gunzTarPerm extractEntry lib/jitsu/properties.js
+120 silly gunzTarPerm extractEntry lib/jitsu/usage.js
+121 silly gunzTarPerm extractEntry lib/jitsu/commands/apps.js
+122 silly gunzTarPerm extractEntry lib/jitsu/commands/databases.js
+123 silly gunzTarPerm extractEntry lib/jitsu/commands/env.js
+124 silly gunzTarPerm extractEntry lib/jitsu/commands/install.js
+125 silly gunzTarPerm extractEntry lib/jitsu/commands/logs.js
+126 silly gunzTarPerm extractEntry lib/jitsu/commands/package.js
+127 silly gunzTarPerm extractEntry lib/jitsu/commands/snapshots.js
+128 silly gunzTarPerm extractEntry lib/jitsu/commands/users.js
+129 silly gunzTarPerm extractEntry lib/jitsu/commands/wizard.js
+130 silly gunzTarPerm extractEntry lib/jitsu/common/index.js
+131 silly gunzTarPerm extractEntry lib/jitsu/common/logfile.js
+132 silly gunzTarPerm extractEntry stacks.api.nodejitsu.com.svg
+133 silly gunzTarPerm extractEntry test/commands/apps-test.js
+134 silly gunzTarPerm extractEntry test/commands/bad-test.js
+135 silly gunzTarPerm extractEntry test/commands/databases-test.js
+136 silly gunzTarPerm extractEntry test/commands/env-test.js
+137 silly gunzTarPerm extractEntry test/commands/logs-test.js
+138 silly gunzTarPerm extractEntry test/commands/no-colors-test.js
+139 silly gunzTarPerm extractEntry test/commands/package-test.js
+140 silly gunzTarPerm extractEntry test/commands/snapshots-test.js
+141 silly gunzTarPerm extractEntry test/commands/users-test.js
+142 silly gunzTarPerm extractEntry test/fixtures/dot-jitsuconf
+143 silly gunzTarPerm extractEntry test/fixtures/example-app/package.json
+144 silly gunzTarPerm extractEntry test/fixtures/example-app/server.js
+145 silly gunzTarPerm extractEntry test/fixtures/logged-out-jitsuconf
+146 silly gunzTarPerm extractEntry test/helpers/macros.js
+147 verbose read json /Users/CodeBender/.npm/jitsu/0.11.6/package/package.json
+148 silly lockFile 348af71a-eBender-npm-jitsu-0-11-6-package /Users/CodeBender/.npm/jitsu/0.11.6/package
+149 silly shasum updated bytes 40960
+150 silly shasum updated bytes 40960
+151 silly shasum updated bytes 40960
+152 silly shasum updated bytes 40960
+153 silly shasum updated bytes 40960
+154 silly shasum updated bytes 40960
+155 silly shasum updated bytes 29994
+156 info shasum ecfa9b1ae0727af0dc556f4679eeb5733ca8dede
+156 info shasum /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+157 verbose from cache /Users/CodeBender/.npm/jitsu/0.11.6/package/package.json
+158 verbose chmod /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz 666
+159 verbose chown /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz [ 501, 20 ]
+160 silly lockFile a972cb97-npmjs-org-jitsu-jitsu-0-11-6-tgz https://registry.npmjs.org/jitsu/-/jitsu-0.11.6.tgz
+161 silly lockFile 40c3d46e-jitsu-0-11-6 jitsu@0.11.6
+162 silly lockFile e680b62f-jitsu jitsu@
+163 silly resolved [ { name: 'jitsu',
+163 silly resolved     description: 'Flawless command line deployment of Node.js apps to the cloud',
+163 silly resolved     keywords:
+163 silly resolved      [ 'cli',
+163 silly resolved        'nodejitsu',
+163 silly resolved        'cloud hosting',
+163 silly resolved        'platform-as-a-service',
+163 silly resolved        'deployment' ],
+163 silly resolved     version: '0.11.6',
+163 silly resolved     author: { name: 'Nodejitsu Inc.', email: 'info@nodejitsu.com' },
+163 silly resolved     maintainers: [ [Object], [Object] ],
+163 silly resolved     repository: { type: 'git', url: 'http://github.com/nodejitsu/jitsu.git' },
+163 silly resolved     preferGlobal: true,
+163 silly resolved     dependencies:
+163 silly resolved      { colors: '0.6.0-1',
+163 silly resolved        complete: '0.3.1',
+163 silly resolved        dateformat: '1.0.2-1.2.3',
+163 silly resolved        flatiron: '0.3.0',
+163 silly resolved        'flatiron-cli-config': '0.1.3',
+163 silly resolved        'flatiron-cli-users': '0.1.4',
+163 silly resolved        fstream: '0.1.18',
+163 silly resolved        'fstream-npm': '0.1.1',
+163 silly resolved        npm: '1.1.59',
+163 silly resolved        'nodejitsu-api': '0.3.6',
+163 silly resolved        pkginfo: '0.2.3',
+163 silly resolved        request: '2.9.203',
+163 silly resolved        'require-analyzer': '0.5.0',
+163 silly resolved        'spawn-command': '0.0.2',
+163 silly resolved        semver: '1.0.14',
+163 silly resolved        tar: '0.1.13',
+163 silly resolved        wizard: '0.0.1',
+163 silly resolved        ladder: '0.0.0',
+163 silly resolved        progress: '0.1.0',
+163 silly resolved        opener: '1.3.x' },
+163 silly resolved     devDependencies: { nock: '0.8.x', vows: '0.7.x' },
+163 silly resolved     bin: { jitsu: './bin/jitsu' },
+163 silly resolved     main: './lib/jitsu',
+163 silly resolved     scripts: { test: 'vows test/commands/*-test.js --spec' },
+163 silly resolved     engines: { node: '>= 0.4.0' },
+163 silly resolved     readme: '# jitsu [![Build Status](https://secure.travis-ci.org/nodejitsu/jitsu.png?branch=master)](http://travis-ci.org/nodejitsu/jitsu)\n*Flawless command line deployment of Node.js apps to the cloud*\n\n<img src="https://github.com/nodejitsu/jitsu/raw/master/assets/jitsu.png"/>\n\n## Overview\n\n[Jitsu](https://github.com/nodejitsu/jitsu) is a [Command Line Tool (CLI)](http://en.wikipedia.org/wiki/Command-line_interface) for managing and deploying Node.js applications. It\'s open-source and easy to use. [We\'ve](https://github.com/nodejitsu) designed `jitsu` to be suitable for command line beginners, but still be powerful and extensible enough for production usage.\n\n`jitsu` requires `npm`, the [node package manager](http://npmjs.org).\n\n## One-line jitsu install\n\n    [sudo] npm install jitsu -g\n\n## Features\n\n`jitsu` is built on some amazing technologies which we\'ve been actively building with the community since 2009. `jitsu` is fully extendable and extremely modular ( see [Libraries](#Libraries) section ).\n\n - Allows for seamless deployment of your Node.js applications to the cloud\n - Ships with use-full boilerplates and sample applications through [Node Apps](https://github.com/nodeapps) project integration\n - Fully supports `npm` dependency resolution on deployment to [Nodejitsu](http://nodejitsu.com)\n - Full support of [Nodejitu\'s API](https://github.com/nodejitsu/nodejitsu-api) ( a plethora of node.js goodies )\n - Integrated multi-level multi-transport logging support via [Winston](https://github.com/flatiron/winston)\n - Too many to list... seek [further knowledge ](https://github.com/nodejitsu/handbook) or just try it out!\n\n\n# One-Line Node App Installation\n\n**If you don\'t have an application yet, you can use one of ours!**\n\n     jitsu install\n\n# One-Line Node App Deployment\n\n     jitsu deploy\n\n*( inside the path of your Node.js application )*\n\n\nThis will create a new application, package.json, and deploy your path to [Nodejitsu](http://nodejitsu.com). If it\'s your first deployment, you\'ll be prompted for some information such as *subdomain* and *start script* but it\'s really easy and we promise it will only take a few seconds.\n\nIf you have any issues deploying your node.js application please feel free to open up an issue on the [Github Issues](https://github.com/nodejitsu/jitsu/issues) section of this page, we\'ll have someone get back to you in a flash!\n\n## Usage\n\n`jitsu` is mostly self documenting. After installation, run the `jitsu` command from your command line.\n\nIf it\'s your first time using `jitsu`, you will be prompted to login with an existing account or create a new account.\n\n<img src="https://github.com/nodejitsu/jitsu/raw/master/assets/login.png"/>\n\n## After you\'ve logged in, you can start deploying apps immediately!\n\n\n\n## Command Line Usage\n\n`jitsu` is mostly self-documenting. Try any of these commands to get started.\n\n\n   **Usage:**\n   \n     jitsu <resource> <action> <param1> <param2> ...\n   \n   **Common Commands:**\n\n   *To sign up for [Nodejitsu](http://nodejitsu.com)*\n\n     jitsu signup\n\n   *To log into [Nodejitsu](http://nodejitsu.com)*\n\n     jitsu login\n\n   *To install a pre-built application*\n\n     jitsu install\n\n   *Deploys application in the current path to [Nodejitsu](http://nodejitsu.com)*\n   \n     jitsu deploy\n   \n   *Lists all applications for the current user*\n   \n     jitsu list\n   \n   *Additional Commands*\n   \n     jitsu apps\n     jitsu snapshots\n     jitsu users\n     jitsu logs\n     jitsu databases\n     jitsu conf\n     jitsu logout\n\n\n\n### Help\n\n`jitsu` is mostly self documenting. We suggest just trying it out. All commands will yield friendly messages if you specify incorrect parameters. If you find anything difficult to use, please open up a [Github issue](https://github.com/nodejitsu/jitsu/issues) or pull request! \n\n     jitsu help\n     jitsu help apps\n     jitsu help snapshots\n     jitsu help users\n     jitsu help logs\n     jitsu help databases\n     jitsu help config\n\n## .jitsuconf file\n\nAll configuration data for your local `jitsu` install is located in the *.jitsuconf* file in your home directory. Directly modifying this file is not really advised. You should be able to make all configuration changes via:\n\n    jitsu config\n\nIf you need to have multiple configuration files, use --localconf or --jitsuconf options.\n\nSome Examples:\n\n    jitsu config set colors false   # disable colors\n    jitsu config set timeout 480000 # set request timeouts to 8 minutes\n    jitsu config set analyze false  # disable package analyzer\n    jitsu config set protocol https # Always use HTTP Secure\n\n##jitsu options\n\n    jitsu [commands] [options]\n \n    --version             print jitsu version and exit\n    --localconf           search for .jitsuconf file in ./ and then parent directories\n    --jitsuconf [file]    specify file to load configuration from\n    --noanalyze           skip require-analyzer: do not attempt to dynamicially detect dependencies\n\n##jitsu behind proxy\n\nIf you are behind a proxy and you haven\'t configured jitsu to use it, `jitsu` will throw an error, `Jitsu requires you to connect to Nodejitsu\'s stack (api.nodejitsu.com)`.\nIn order to solve this issue, you can configure jitsu to use a proxy by executing the following command.\n\n    jitsu config set proxy http://proxy.domain.com:3128/\n\nIf you need to authenticate yourselves to the proxy, you can try this command.\n\n    jitsu config set proxy http://user:pass@proxy.domain.com:3128/\n\n<a name="Libraries"></a>\n\n##jitsu hooks\n\nYou can add pre-deploy and post-deploy hooks to jitsu for running build scripts, tagging releases or anything else you want to do. These are hooks that are executed before or after deploying your application on the local machine. They are stored in your package.json:\n\n    {\n      "name": "test-app",\n      "subdomain": "test-app",\n      "scripts": {\n        "predeploy": "echo This will be run before deploying the app",\n        "postdeploy": "echo This will be run after deploying the app",\n        "start": "app.js"\n      },\n      "engines": {\n        "node": "0.6.x"\n      },\n      "version": "0.0.0"\n    }\n\nWhich results in the following output when deploying:\n\n    $ jitsu deploy\n    info:    Welcome to Nodejitsu nodejitsu\n    info:    It worked if it ends with Nodejitsu ok\n    info:    Executing command deploy\n    info:    Analyzing your application dependencies in app.js\n    info:    Checking app availability test-app\n    info:    Creating app test-app\n    This will be run before deploying the app\n    info:    Creating snapshot 0.0.0\n    info:    Updating app test-app\n    info:    Activating snapshot 0.0.0 for test-app\n    info:    Starting app test-app\n    info:    App test-app is now started\n    info:    http://test-app.jit.su on Port 80\n    This will be run after deploying the app\n    info:    Nodejitsu ok\n\n## Libraries\n`jitsu` is built on a few well developed, well maintained Node.js libraries. The [Nodejitsu](http://nodejitsu.com) team and friends have been building and using these projects actively for the past two years. They are the most used Node libraries (see: [http://search.npmjs.org/](http://search.npmjs.org/)) and are actively maintained by Nodejitsu and other core members of the Node.js community. Each library serves a specific function and we highly suggest you check each one out individually if you wish to increase your knowledge of Node.js\n\n- [npm](http://npmjs.org) - Node Package Manager\n- [colors](https://github.com/marak/colors.js) - Terminal Colors module\n- [optimist](https://github.com/substack/node-optimist) - CLI Options Parsing\n- [request](https://github.com/mikeal/request) - http request module\n- [async](https://github.com/caolan/async) - Asynchronous Iteration\n- [vows](http://vowsjs.org) - Asynchronous BDD testing library\n- [winston](https://github.com/flatiron/winston) - Multi-transport logging library\n\n### Need more?\nThe documentation for `jitsu` and the [Nodejitsu](http://nodejitsu.com) APIs is open-source and a work in-progress. For more information checkout the [Nodejitsu Handbook](https://github.com/nodejitsu/handbook)\n\n#### (C) Copyright 2010, [Nodejitsu](http://nodejitsu.com) Inc.\n',
+163 silly resolved     _id: 'jitsu@0.11.6',
+163 silly resolved     dist: { shasum: 'ecfa9b1ae0727af0dc556f4679eeb5733ca8dede' },
+163 silly resolved     _from: 'jitsu' } ]
+164 info install jitsu@0.11.6 into /usr/local/lib
+165 info installOne jitsu@0.11.6
+166 verbose from cache /Users/CodeBender/.npm/jitsu/0.11.6/package/package.json
+167 info /usr/local/lib/node_modules/jitsu unbuild
+168 verbose read json /usr/local/lib/node_modules/jitsu/package.json
+169 verbose tar unpack /Users/CodeBender/.npm/jitsu/0.11.6/package.tgz
+170 silly lockFile e08531dc-usr-local-lib-node-modules-jitsu /usr/local/lib/node_modules/jitsu
+171 verbose lock /usr/local/lib/node_modules/jitsu /Users/CodeBender/.npm/e08531dc-usr-local-lib-node-modules-jitsu.lock
+172 silly gunzTarPerm modes [ '777', '666' ]
+173 error Error: EACCES, mkdir '/usr/local/lib/node_modules/jitsu'
+173 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/jitsu']
+173 error   errno: 3,
+173 error   code: 'EACCES',
+173 error   path: '/usr/local/lib/node_modules/jitsu',
+173 error   fstream_type: 'Directory',
+173 error   fstream_path: '/usr/local/lib/node_modules/jitsu',
+173 error   fstream_class: 'DirWriter',
+173 error   fstream_stack:
+173 error    [ 'DirWriter._create (/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23)',
+173 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:51:17',
+173 error      'Object.oncomplete (fs.js:297:15)' ] }
+174 error Please try running this command again as root/Administrator.
+175 error System Darwin 12.2.0
+176 error command "node" "/usr/local/bin/npm" "install" "jitsu" "-g"
+177 error cwd /Applications/XAMPP/xamppfiles/htdocs/iServer/Apps/Hey
+178 error node -v v0.8.7
+179 error npm -v 1.1.49
+180 error path /usr/local/lib/node_modules/jitsu
+181 error fstream_path /usr/local/lib/node_modules/jitsu
+182 error fstream_type Directory
+183 error fstream_class DirWriter
+184 error code EACCES
+185 error errno 3
+186 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/jitsu'
+187 error fstream_stack DirWriter._create (/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23)
+187 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:51:17
+187 error fstream_stack Object.oncomplete (fs.js:297:15)
+188 verbose exit [ 3, true ]
