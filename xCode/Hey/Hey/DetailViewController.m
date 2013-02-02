@@ -15,7 +15,7 @@
 @end
 
 @implementation DetailViewController
-@synthesize txtCaption;
+/*@synthesize txtCaption;
 @synthesize mapDetail;
 @synthesize toolbar;
 @synthesize imgDetail;
@@ -25,9 +25,9 @@
 @synthesize txtTimeStamp;
 @synthesize txtLocation;
 @synthesize txtChecked;
-@synthesize mediaID;
 @synthesize urlString;
-@synthesize titleString;
+@synthesize titleString;*/
+@synthesize mediaID;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,63 +44,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    scrollDetail.contentSize = CGSizeMake(viewDetail.frame.size.width, viewDetail.frame.size.height);
+    self.scrollDetail.contentSize = CGSizeMake(self.viewDetail.frame.size.width, self.viewDetail.frame.size.height);
     
     self.mapDetail.layer.cornerRadius = 3;
     
-    [[mapDetail layer] setShadowColor:[UIColor blackColor].CGColor];
-    [[mapDetail layer] setShadowOpacity:1.0f];
+    [[self.mapDetail layer] setShadowColor:[UIColor blackColor].CGColor];
+    [[self.mapDetail layer] setShadowOpacity:1.0f];
     
   //  self.view.frame = CGRectMake(0, -80, 320 , 480);
 
 }
 
 
-- (void)updateLikes:(NSData *)responseData {
-    
 
-  //parse out the json data
-    NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData  options:kNilOptions error:&error];
-    
-    NSString *stringData = [json objectForKey:@"accessCode"];
-    
-    if([stringData isEqualToString:@"valid"]){
-        
-        self.txtLikes.text = [[json objectForKey:@"likes"] stringValue];
-        
-    }else if([stringData isEqualToString:@"error"]){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dislike Error" message:@"Hey!! You Can't Like This Post Twice" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        
-        [alert show];
-        
-    }
-    
-}
 
-- (void)updateDisLikes:(NSData *)responseData {
-    
-    
-    //parse out the json data
-    NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData  options:kNilOptions error:&error];
-    
-    NSString *stringData = [json objectForKey:@"accessCode"];
-    
-    if([stringData isEqualToString:@"valid"]){
-        
-        self.txtDislikes.text = [[json objectForKey:@"dislikes"] stringValue];
-        
-    }else if([stringData isEqualToString:@"error"]){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dislike Error" message:@"Hey!! You Can't Dislike This Post Twice" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        
-        [alert show];
-        
-    }
-    
-}
+
 
 - (void)viewDidUnload
 {
@@ -137,7 +95,7 @@
 - (void)cameraRoll {
 
     //save picture to the camera roll
-    UIImageWriteToSavedPhotosAlbum(imgDetail.image, nil, nil, nil);
+    UIImageWriteToSavedPhotosAlbum(self.imgDetail.image, nil, nil, nil);
 
 }
 

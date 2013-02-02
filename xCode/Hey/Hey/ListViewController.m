@@ -11,6 +11,7 @@
 #import "MenuViewController.h"
 #import "MediaViewController.h"
 #import "SignUpViewController.h"
+#import "NavigationBarButtons.h"
 
 
 @interface ListViewController (){
@@ -60,6 +61,8 @@
     
     self.navigationItem.leftBarButtonItem = btnListLeft;
     
+    NavigationBarButtons *navi = [NavigationBarButtons alloc];
+    [navi navigationBarButtonsForControllers:self];
     
  }
 

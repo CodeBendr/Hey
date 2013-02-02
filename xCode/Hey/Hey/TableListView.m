@@ -10,6 +10,7 @@
 #import "ListViewCell.h"
 #import "ViewHelper.m"
 #import "DetailViewController.h"
+#import "NavigationBarButtons.h"
 
 @interface TableListView ()
 
@@ -36,9 +37,10 @@
             
             // Whether the built-in pagination is enabled
             self.paginationEnabled = YES;
+        
             
             // The number of objects to show per page
-            self.objectsPerPage = 15;
+            self.objectsPerPage = 7;
             
         }
 
@@ -51,6 +53,7 @@
 	// Do any additional setup after loading the view.
     
     [self.tableView setRowHeight:138];
+    [self.tableView setSeparatorStyle:UITableViewCellSelectionStyleGray];
     
 }
 
@@ -205,13 +208,67 @@
 }
 
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"NextPage";
+    
+    UITableViewCell *cell;
+    
+    if(cell == nil){
+        
+        UINib *nib = [UINib nibWithNibName:@"CellLocationView" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+        
+    }
+    
+    return cell;
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     DetailViewController *detail = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     //UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:detail];
      [self.navigationController pushViewController:detail animated:YES];
     
+    
+    UIButton *logo = [[UIButton alloc] initWithFrame:CGRectMake(0, -20, 40, 39)];
+    [logo setImage:[UIImage imageNamed:@"navi_logo.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *logoRight = [[UIBarButtonItem alloc] initWithCustomView:logo];
+    
+    self.navigationController.navigationItem.rightBarButtonItem = logoRight;
+
+    
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    
+    //add values from parse backend
+    [detail.txtCaption setFont:[UIFont fontWithName:@"Lato-Light" size:28]];
+    [detail.txtTimeStamp setFont:[UIFont fontWithName:@"Lato-Regular" size:9]];
+    [detail.txtUsername setFont:[UIFont fontWithName:@"Lato-Regular" size:11.5]];
+    [detail.txtType setFont:[UIFont fontWithName:@"Lato-Regular" size:11.5]];
+    [detail.txtLocation setFont:[UIFont fontWithName:@"Lato-Regular" size:13]];
+    
+    
+    //text information related to list object
+    detail.txtCaption.text  = [object objectForKey:@"caption"];
+    detail.txtLocation.text = [object objectForKey:@"location"];
+    detail.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"type"]];
+    
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *date = [df stringFromDate:object.createdAt];
+    detail.txtTimeStamp.text = [ViewHelper fuzzyTime:date];
+    
+    
+    PFObject *user = [object objectForKey:@"postedBy"];
+    
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        detail.txtUsername.text = [user objectForKey:@"username"];
+        
+    }];
+
     
     PFFile *thumb = [object objectForKey:@"file"];
     [thumb getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {

@@ -38,8 +38,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-       [self.table setSeparatorStyle:UITableViewCellSelectionStyleGray];
+
     
     [self.searchLocation setBackgroundImage:[UIImage imageNamed:@"tabBar.png"]];
     
@@ -57,7 +56,6 @@
         
         //standard location service
         [locationManager startUpdatingLocation];
-        
         
     }else {
         
@@ -88,8 +86,8 @@
     self.stringLon = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
