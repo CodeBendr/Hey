@@ -186,7 +186,7 @@
     //text information related to list object
     listViewCell.txtCaption.text  = [object objectForKey:@"caption"];
     listViewCell.txtLocation.text = [object objectForKey:@"location"];
-    listViewCell.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"type"]];
+    listViewCell.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"category"]];
     
   
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -199,9 +199,13 @@
     
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
-        listViewCell.txtUsername.text = [user objectForKey:@"username"];
+        if (!error) {
         
-    }];
+        listViewCell.txtUsername.text = [object objectForKey:@"username"];
+            
+        }
+        
+    }]; 
     
     return cell;
     
@@ -232,11 +236,6 @@
      [self.navigationController pushViewController:detail animated:YES];
     
     
-    UIButton *logo = [[UIButton alloc] initWithFrame:CGRectMake(0, -20, 40, 39)];
-    [logo setImage:[UIImage imageNamed:@"navi_logo.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *logoRight = [[UIBarButtonItem alloc] initWithCustomView:logo];
-    
-    self.navigationController.navigationItem.rightBarButtonItem = logoRight;
 
     
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
@@ -252,7 +251,7 @@
     //text information related to list object
     detail.txtCaption.text  = [object objectForKey:@"caption"];
     detail.txtLocation.text = [object objectForKey:@"location"];
-    detail.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"type"]];
+    detail.txtType.text     = [NSString stringWithFormat:@"tagged as: %@",[object objectForKey:@"category"]];
     
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -261,18 +260,24 @@
     detail.txtTimeStamp.text = [ViewHelper fuzzyTime:date];
     
     
-    PFObject *user = [object objectForKey:@"postedBy"];
+   PFObject *user = [object objectForKey:@"postedBy"];
     
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
-        detail.txtUsername.text = [user objectForKey:@"username"];
+        if (!error) {
+        
+        detail.txtUsername.text = [object objectForKey:@"username"];
+            
+        }
         
     }];
 
     
-    PFFile *thumb = [object objectForKey:@"file"];
+   PFFile *thumb = [object objectForKey:@"file"];
     [thumb getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
+            
+            [detail.viewDetail setHidden:YES];
             
             // image can now be set on a UIImageView
             detail.imgDetail.image = [UIImage imageWithData:data];

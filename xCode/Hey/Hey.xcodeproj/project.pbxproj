@@ -103,8 +103,11 @@
 		A8032379163E6768003CBE39 /* ListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8032377163E6768003CBE39 /* ListViewCell.m */; };
 		A8032393163E88D2003CBE39 /* TableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8032392163E88D2003CBE39 /* TableListView.m */; };
 		A8032395163E8E37003CBE39 /* TableListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8032394163E8E36003CBE39 /* TableListView.xib */; };
+		A8041F7516BE280300E9D48E /* TableCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8041F7416BE280200E9D48E /* TableCategoryView.xib */; };
 		A828840A16ABA29700B97FB2 /* barView.png in Resources */ = {isa = PBXBuildFile; fileRef = A828840816ABA29700B97FB2 /* barView.png */; };
 		A828840B16ABA29700B97FB2 /* barView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A828840916ABA29700B97FB2 /* barView@2x.png */; };
+		A82A98C116BE2E6900D1C58D /* TableCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8041F7116BDB4A800E9D48E /* TableCategoryView.m */; };
+		A82A98C516BE532000D1C58D /* NSString+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A98C416BE532000D1C58D /* NSString+Manipulation.m */; };
 		A857ADB616B26D6E00029196 /* NextPageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857ADB516B26D6E00029196 /* NextPageViewCell.xib */; };
 		A857ADBA16B27BE000029196 /* btnLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A857ADB816B27BE000029196 /* btnLocation@2x.png */; };
 		A857ADBB16B27BE000029196 /* btnLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = A857ADB916B27BE000029196 /* btnLocation.png */; };
@@ -249,8 +252,13 @@
 		A8032391163E88D2003CBE39 /* TableListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableListView.h; sourceTree = "<group>"; };
 		A8032392163E88D2003CBE39 /* TableListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableListView.m; sourceTree = "<group>"; };
 		A8032394163E8E36003CBE39 /* TableListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableListView.xib; sourceTree = "<group>"; };
+		A8041F7116BDB4A800E9D48E /* TableCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCategoryView.m; sourceTree = "<group>"; };
+		A8041F7316BE27E800E9D48E /* TableCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCategoryView.h; sourceTree = "<group>"; };
+		A8041F7416BE280200E9D48E /* TableCategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCategoryView.xib; sourceTree = "<group>"; };
 		A828840816ABA29700B97FB2 /* barView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = barView.png; path = ../../../PNG/Assets/barView.png; sourceTree = "<group>"; };
 		A828840916ABA29700B97FB2 /* barView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barView@2x.png"; path = "../../../PNG/Assets/barView@2x.png"; sourceTree = "<group>"; };
+		A82A98C316BE531F00D1C58D /* NSString+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Manipulation.h"; sourceTree = "<group>"; };
+		A82A98C416BE532000D1C58D /* NSString+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Manipulation.m"; sourceTree = "<group>"; };
 		A857ADB516B26D6E00029196 /* NextPageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextPageViewCell.xib; sourceTree = "<group>"; };
 		A857ADB816B27BE000029196 /* btnLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnLocation@2x.png"; path = "../../../PNG/Assets/btnLocation@2x.png"; sourceTree = "<group>"; };
 		A857ADB916B27BE000029196 /* btnLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnLocation.png; path = ../../../PNG/Assets/btnLocation.png; sourceTree = "<group>"; };
@@ -413,10 +421,10 @@
 				A803227E16392380003CBE39 /* CategoryViewController.xib */,
 				A8032257163921FE003CBE39 /* MediaViewController.h */,
 				A8032258163921FE003CBE39 /* MediaViewController.m */,
+				A8032259163921FE003CBE39 /* MediaViewController.xib */,
 				A803226C16392306003CBE39 /* PostViewController.h */,
 				A803226D16392306003CBE39 /* PostViewController.m */,
 				A803226E16392306003CBE39 /* PostViewController.xib */,
-				A8032259163921FE003CBE39 /* MediaViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -542,6 +550,7 @@
 		A8032322163A9B27003CBE39 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A82A98C216BE52D400D1C58D /* NSString */,
 				A874271F16B08FEA007FF90F /* NSDate */,
 				A883DB4316AB05A6005BF802 /* UIFont */,
 				A803232C163A9B42003CBE39 /* UIImage */,
@@ -566,10 +575,22 @@
 			isa = PBXGroup;
 			children = (
 				A8032391163E88D2003CBE39 /* TableListView.h */,
-				A8032394163E8E36003CBE39 /* TableListView.xib */,
 				A8032392163E88D2003CBE39 /* TableListView.m */,
+				A8032394163E8E36003CBE39 /* TableListView.xib */,
+				A8041F7316BE27E800E9D48E /* TableCategoryView.h */,
+				A8041F7416BE280200E9D48E /* TableCategoryView.xib */,
+				A8041F7116BDB4A800E9D48E /* TableCategoryView.m */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		A82A98C216BE52D400D1C58D /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				A82A98C316BE531F00D1C58D /* NSString+Manipulation.h */,
+				A82A98C416BE532000D1C58D /* NSString+Manipulation.m */,
+			);
+			name = NSString;
 			sourceTree = "<group>";
 		};
 		A874271F16B08FEA007FF90F /* NSDate */ = {
@@ -739,6 +760,7 @@
 				A857ADBB16B27BE000029196 /* btnLocation.png in Resources */,
 				A857ADC216B4C9BE00029196 /* navi_logo.png in Resources */,
 				A857ADC316B4C9BE00029196 /* navi_logo@2x.png in Resources */,
+				A8041F7516BE280300E9D48E /* TableCategoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +771,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A82A98C116BE2E6900D1C58D /* TableCategoryView.m in Sources */,
 				A8032319163A8684003CBE39 /* PostViewController.m in Sources */,
 				A80321D016385492003CBE39 /* main.m in Sources */,
 				A80321D416385492003CBE39 /* AppDelegate.m in Sources */,
@@ -770,6 +793,7 @@
 				A874271D16B08FE6007FF90F /* NSDate-Utilities.m in Sources */,
 				A874272916B12266007FF90F /* DetailViewController.m in Sources */,
 				A857ADC616B4CA7B00029196 /* NavigationBarButtons.m in Sources */,
+				A82A98C516BE532000D1C58D /* NSString+Manipulation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

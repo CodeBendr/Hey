@@ -14,13 +14,13 @@
 #import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 
-@interface PostViewController : UIViewController <CLLocationManagerDelegate,MBProgressHUDDelegate>{
+@interface PostViewController : UIViewController <CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UITextFieldDelegate>{
     
     CLLocationManager *_locationManager;
     CLGeocoder *_geoCoder;
     
-    MBProgressHUD *HUD;
-    MBProgressHUD *refreshHUD;
+  //  MBProgressHUD *HUD;
+   // MBProgressHUD *refreshHUD;
     
 }
 
@@ -33,12 +33,18 @@
 @property (copy, nonatomic) NSString *stringLat;
 @property (copy, nonatomic) NSString *stringLon;
 @property (weak, nonatomic) IBOutlet UIView *viewRequestProcess;
+@property (weak, nonatomic) IBOutlet UILabel *txtChooseImage;
+@property (weak, nonatomic) IBOutlet UILabel *txtPostCharAtOne;
+@property (weak, nonatomic) IBOutlet UILabel *txtLocationCharAtOne;
 
 @property (strong, nonatomic) LocationViewController *locationController;
 @property (strong, nonatomic) CategoryViewController *categoryController;
+- (IBAction)changeImage:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *viewIndicator;
 @property (weak, nonatomic) NSTimer *blink;
+
+-(NSString*)getFirstCharacterFromString:(NSString *)character;
 
 - (IBAction)sendPostToServer:(id)sender;
 

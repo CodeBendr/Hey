@@ -31,6 +31,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.txtTextLabel setFont:[UIFont fontWithName:@"Lato-Light" size:18]];
+    [self.txtImageLabel setFont:[UIFont fontWithName:@"Lato-Light" size:18]];
+    [self.txtDesc setFont:[UIFont fontWithName:@"Lato-Light" size:21]];
 }
 
 - (void)viewDidUnload

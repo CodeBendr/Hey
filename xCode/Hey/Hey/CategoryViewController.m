@@ -7,6 +7,8 @@
 //
 
 #import "CategoryViewController.h"
+#import "TableCategoryView.h"
+#import "NavigationBarButtons.h"
 
 @interface CategoryViewController ()
 
@@ -31,15 +33,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSURL *postURL   = [bundle URLForResource:@"topics" withExtension:@"plist"];
     
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfURL:postURL];
-    self.categoryArray = [dic objectForKey:@"item"];
+    TableCategoryView *table = [[TableCategoryView alloc] initWithClassName:@"Category"];
+    [self addChildViewController:table];
+    table.view.frame = CGRectMake(0.f, 0.f, 320.f, 480.f);
+	[self.view addSubview:table.view];
     
-    NSSortDescriptor* sortOrder = [NSSortDescriptor sortDescriptorWithKey: @"self" ascending:YES];
-    [categoryArray sortedArrayUsingDescriptors: [NSArray arrayWithObject: sortOrder]];
+    //create the add button and add it to the right side of the navigator
+    UIButton *btnList = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 39, 31)];
+    [btnList setImage:[UIImage imageNamed:@"btnListGlobal.png"] forState:UIControlStateNormal];
+    [btnList addTarget:self action:@selector(closeMenu:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnListLeft = [[UIBarButtonItem alloc] initWithCustomView:btnList];
     
+    self.navigationItem.leftBarButtonItem = btnListLeft;
+    
+    NavigationBarButtons *navi = [NavigationBarButtons alloc];
+    [navi navigationBarButtonsForControllers:self];
+    
+  
 }
 
 - (void)viewDidUnload
@@ -58,7 +69,7 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+/*- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.categoryArray.count;
 }
@@ -77,8 +88,10 @@
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+        
     UILabel *txtCategory = (UILabel*)[cell viewWithTag:1];
-    txtCategory.text     = [self.categoryArray objectAtIndex:indexPath.row];
+    [txtCategory setFont:[UIFont fontWithName:@"Lato-Regular" size:18]];
+     txtCategory.text     = [self.categoryArray objectAtIndex:indexPath.row];
     
     return cell;
     
@@ -90,6 +103,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
-}
+}*/
 
 @end

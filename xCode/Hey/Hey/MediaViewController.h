@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *txtDesc;
 @property (weak, nonatomic) IBOutlet UILabel *txtImageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *txtTextLabel;
 
 - (IBAction)closeMediaView:(id)sender;
 

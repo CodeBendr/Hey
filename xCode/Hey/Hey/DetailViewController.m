@@ -46,7 +46,16 @@
     
     self.scrollDetail.contentSize = CGSizeMake(self.viewDetail.frame.size.width, self.viewDetail.frame.size.height);
     
+    [self.viewDetail setHidden:NO];
+    
     self.mapDetail.layer.cornerRadius = 3;
+    
+    UIButton *logo = [[UIButton alloc] initWithFrame:CGRectMake(0, -20, 40, 39)];
+    [logo setImage:[UIImage imageNamed:@"navi_logo.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *logoRight = [[UIBarButtonItem alloc] initWithCustomView:logo];
+    
+    self.navigationController.navigationItem.rightBarButtonItem = logoRight;
+
     
     [[self.mapDetail layer] setShadowColor:[UIColor blackColor].CGColor];
     [[self.mapDetail layer] setShadowOpacity:1.0f];

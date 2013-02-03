@@ -12,6 +12,9 @@
 #import "MenuViewController.h"
 #import "MediaViewController.h"
 #import "UIImage+ResizeAdditions.h"
+#import "NavigationBarButtons.h"
+#import "NSString+Manipulation.h"
+#import "ListViewController.h"
 
 @interface PostViewController ()
 
@@ -69,15 +72,20 @@
     
    // self.viewIndicator.layer.cornerRadius = 8.0;
     
+    
+     NavigationBarButtons *navi = [NavigationBarButtons alloc];
+    [navi navigationBarButtonsForControllers:self];
+    
      self.blink = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(blinkIndicator) userInfo:nil repeats:YES];
     
-  //  [txtPost becomeFirstResponder];
+     //[txtPost becomeFirstResponder];
     
-    
-    //configure fonts for view
+     //configure fonts for view
      [self.txtLocation setFont:[UIFont fontWithName:@"Lato-Light" size:35]];
      [self.txtPost setFont:[UIFont fontWithName:@"Lato-Light" size:35]];
      [self.txtCategory setFont:[UIFont fontWithName:@"Lato-Light" size:18]];
+     [self.txtPostCharAtOne setFont:[UIFont fontWithName:@"Lato-Light" size:21]];
+     [self.txtLocationCharAtOne setFont:[UIFont fontWithName:@"Lato-Light" size:21]];
     
 }
 
@@ -145,9 +153,9 @@
     
         
         //HUD
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+     //   HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.viewRequestProcess setHidden:NO];
-        [self.viewRequestProcess addSubview:HUD];
+     //   [self.viewRequestProcess addSubview:HUD];
 
         
         // Save PFFile
@@ -156,7 +164,6 @@
             if (!error) {
                 // Hide old HUD, show completed HUD (see example for code)
                 
-   
                 // Create a PFObject around a PFFile and associate it with the current user
                 PFObject *uploadMedia = [PFObject objectWithClassName:@"Media"];
                 [uploadMedia setObject:imageFile forKey:@"file"];
@@ -172,9 +179,9 @@
                 [uploadMedia setObject:self.txtPost.text      forKey:@"caption"];
                 [uploadMedia setObject:self.txtCategory.text  forKey:@"category"];
                 [uploadMedia setObject:self.txtLocation.text  forKey:@"location"];
-                [uploadMedia setObject:self.stringLat         forKey:@"latitude"];
-                [uploadMedia setObject:self.stringLon         forKey:@"longitude"];
-                [uploadMedia setObject:@"picture"           forKey:@"type"];
+                PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:[self.stringLat doubleValue] longitude:[self.stringLon doubleValue]];
+                [uploadMedia setObject:point forKey:@"latlong"];
+                [uploadMedia setObject:@"picture" forKey:@"type"];
                 
                  PFFile *thumbnailFile = [PFFile fileWithName:@"thumb" data:thumbnailImageData];
                 [uploadMedia setObject:thumbnailFile forKey:@"thumbnail"];
@@ -188,7 +195,14 @@
                            
                             if (!error) {
                             
-                            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
+                                
+                                
+                                    ListViewController *list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
+                                    [super presentViewController:list animated:YES completion:nil];
+                                    
+                                    
+                                }];
                             
                             }else{
                             
@@ -212,7 +226,7 @@
             }
             else{
                 
-                [HUD hide:YES];
+             //   [HUD hide:YES];
                 [self.viewRequestProcess setHidden:YES];
                 
                 // Log details of the failure
@@ -222,7 +236,7 @@
         } progressBlock:^(int percentDone) {
             
             // Update your progress spinner here. percentDone will be between 0 and 100.
-            HUD.progress = (float)percentDone/100;
+        //    HUD.progress = (float)percentDone/100;
             
         }];
                
@@ -255,7 +269,6 @@
     
     }];
     
-   
 }
 
 - (IBAction)showLocation:(id)sender {
@@ -330,6 +343,8 @@
         
     } completion:nil];
     
+ //    self.viewIndicator.frame = CGRectMake(23, 179, 7, 9);
+    
     return NO;
     
 }
@@ -354,110 +369,9 @@
 }
 
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    // This method is called when the server has determined that it
-    // has enough information to create the NSURLResponse.
-    
-    // It can be called multiple times, for example in the case of a
-    // redirect, so each time we reset the data.
-    
-    // receivedData is an instance variable declared elsewhere.
-    [self.receivedData setLength:0];
-     // NSLog(@"image data length %@",response);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    // Append the new data to receivedData.
-    // receivedData is an instance variable declared elsewhere.
-    [self.receivedData appendData:data];
-    [self.viewRequestProcess setHidden:YES];
-    
-   // NSString *stringData= [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]; 
-    
-    //parse out the json data
-    NSError* error;
-    NSDictionary* jsonData = [NSJSONSerialization JSONObjectWithData:self.receivedData  options:kNilOptions error:&error];
-    
-     NSString *stringData = [jsonData objectForKey:@"accessCode"];
-     NSLog(@"accessCode %@",stringData);
-    
-    if([stringData isEqualToString:@"error"] || [stringData isEqualToString:@"idError"] || [stringData isEqualToString:@"dbError"]){
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hey! Post not added" message:@"Post couldn't be added at this time" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
-        
-        [alert show];
-        
-    }else if([stringData isEqualToString:@"valid"]){
-        
-        NSArray *mediaOne = [jsonData objectForKey:@"media"];
-        NSDictionary *media = [mediaOne objectAtIndex:0];
- 
-       
-         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
-             
-           [dataArray addObject:[media objectForKey:@"caption"]];
-            
-        
-             [dataArray addObject:[media objectForKey:@"category"]];
-             [dataArray addObject:[media objectForKey:@"checked"]];
-             [dataArray addObject:[media objectForKey:@"file"]];
-             
-             NSDictionary *geo = [media objectForKey:@"geo"];
-             
-             [dataArray addObject:[geo objectForKey:@"lat"]];
-             [dataArray addObject:[geo objectForKey:@"loc"]];
-             [dataArray addObject:[geo objectForKey:@"lon"]];
-             
-             [dataArray addObject:[media objectForKey:@"id"]];
-             [dataArray addObject:[media objectForKey:@"thumb"]];
-             [dataArray addObject:[media objectForKey:@"timestamp"]];
-             [dataArray addObject:[media objectForKey:@"type"]];
-                      
-        //  [list.mainTableData addObject:dataArray];
-        //  NSArray *path = [[NSArray alloc]initWithObjects:[NSIndexPath indexPathForRow:0 inSection:0],nil];
-       // [list.mainTable insertRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationAutomatic];
-   
-         // [self.presentingViewController.presentingViewController dismissModalViewControllerAnimated:YES];
-        
-          [self.blink invalidate];
-        
-     }
-     
-}
 
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    
-    // inform the user
-    
-    [self.viewRequestProcess setHidden:YES];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Fail Error" message:@"Server communication error. Please check your connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    
-    [alert show];
-}
 
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    if([self.receivedData length] == 0){
-        
-        [self.viewRequestProcess setHidden:YES];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Server communication error. Please check your connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        
-        [alert show];
-        
-    }
-    
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
-    
-    
-}
 
 
 #pragma location delegations
@@ -544,6 +458,185 @@
         [manager stopUpdatingLocation];
     }
 }
+
+
+
+#pragma mark change image
+
+
+- (IBAction)changeImage:(id)sender {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Media" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"From Camera",@"From Library",nil];
+    
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    
+    [actionSheet showInView:self.view];
+    
+}
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
+	if (buttonIndex == 0) {
+        
+        //check to see if the device camera is available
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Camera Unavailable"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            
+            [alert show];
+            
+            
+            
+        }else{
+            
+            
+            //create an instance to load the device camera
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate                 = self;
+            picker.allowsEditing            = YES;
+            picker.sourceType               = UIImagePickerControllerSourceTypeCamera;
+            
+            [self presentViewController:picker animated:YES completion:nil];
+            
+        }
+        
+		
+        
+		
+    } else if (buttonIndex == 1) {
+        
+        //check to see if the device camera is available
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Camera Unavailable"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            
+            [alert show];
+            
+            
+            
+        }else{
+            
+            //create an instance to load the device camera
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate                 = self;
+            picker.allowsEditing            = YES;
+            picker.sourceType               = UIImagePickerControllerSourceTypePhotoLibrary;
+            
+            [self presentViewController:picker animated:YES completion:NULL];
+            
+        }
+		
+        
+    }
+}
+
+#pragma mark -
+#pragma mark image picker delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    
+    //create an instance of UIImage to point to the snapped picture by type casting
+    
+    // UIImage *img = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *img = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+        self.imgPost.image       = img;
+        
+    }];
+    
+    //save picture to the camera roll
+    // UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+    
+    // self.imageSelected.image = img;
+    
+    // self.imageSelected.contentMode = UIViewContentModeScaleAspectFit;
+    
+    /* if ([picker sourceType] == UIImagePickerControllerSourceTypePhotoLibrary) {
+     
+     // Get the asset url
+     NSURL *url = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+     
+     // We need to use blocks. This block will handle the ALAsset that's returned:
+     ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+     {
+     // Get the location property from the asset
+     CLLocation *location = [myasset valueForProperty:ALAssetPropertyLocation];
+     
+     if(location != nil)
+     
+     NSLog(@"%.5f°",location.coordinate.latitude);
+     
+     };
+     
+     // This block will handle errors:
+     ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
+     {
+     NSLog(@"Can not get asset - %@",[myerror localizedDescription]);
+     // Do something to handle the error
+     };
+     
+     
+     // Use the url to get the asset from ALAssetsLibrary,
+     // the blocks that we just created will handle results
+     ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+     [assetslibrary assetForURL:url
+     resultBlock:resultblock
+     failureBlock:failureblock];
+     
+     }*/
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController*)picker{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+
+    
+       
+    self.txtPostCharAtOne.text = [self getFirstCharacterFromString:textField.text];
+    
+    return YES;
+
+}
+
+-(NSString*)getFirstCharacterFromString:(NSString *)character{
+    
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [character componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    for (NSString * word in words) {
+        
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringWithRange:[word rangeOfComposedCharacterSequenceAtIndex:0]];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+        }
+    }
+    
+    return firstCharacters;
+    
+}
+
+
+
+
+
 
 
 @end
