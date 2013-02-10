@@ -15,6 +15,10 @@
 
 - (IBAction)addMediaAction:(id)sender;
 - (IBAction)listViewAction:(id)sender;
+- (IBAction)profileViewAction:(id)sender;
+- (IBAction)mapViewAction:(id)sender;
+- (IBAction)searchViewAction:(id)sender;
+- (void)showlistView;
 
 
 @end

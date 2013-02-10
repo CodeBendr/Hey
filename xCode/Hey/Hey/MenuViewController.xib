@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
+		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1929</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -292,12 +292,39 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">mapViewAction:</string>
+						<reference key="source" ref="318084189"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">58</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">listViewAction:</string>
 						<reference key="source" ref="686120901"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">56</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">profileViewAction:</string>
+						<reference key="source" ref="1029005581"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">57</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">searchViewAction:</string>
+						<reference key="source" ref="438213807"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">59</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -429,7 +456,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">56</int>
+			<int key="maxID">59</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -439,6 +466,9 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addMediaAction:">id</string>
 						<string key="listViewAction:">id</string>
+						<string key="mapViewAction:">id</string>
+						<string key="profileViewAction:">id</string>
+						<string key="searchViewAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="addMediaAction:">
@@ -447,6 +477,18 @@
 						</object>
 						<object class="IBActionInfo" key="listViewAction:">
 							<string key="name">listViewAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="mapViewAction:">
+							<string key="name">mapViewAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="profileViewAction:">
+							<string key="name">profileViewAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="searchViewAction:">
+							<string key="name">searchViewAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -461,7 +503,7 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1536" key="NS.object.0"/>
+			<real value="1552" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
@@ -476,6 +518,6 @@
 			<string key="menuViewbottom.png">{320, 284}</string>
 			<string key="menuViewtop.png">{320, 197}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1929</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

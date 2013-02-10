@@ -11,6 +11,9 @@
 #import "SignupViewController.h"
 #import "MediaViewController.h"
 #import "ListViewController.h"
+#import "ProfileViewController.h"
+#import "MapViewController.h"
+#import "SearchViewController.h"
 
 
 
@@ -95,6 +98,88 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:list];
     [self presentViewController:navi animated:YES completion:nil];
     
+}
+
+- (IBAction)profileViewAction:(id)sender {
+    
+    if (![PFUser currentUser]) {
+        
+        LoginViewController *login = [[LoginViewController alloc] init];
+        login.delegate = self;
+        
+        [login setFields:PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton];
+        
+        SignupViewController *signup = [[SignupViewController alloc] init];
+        [signup setDelegate:self];
+        [signup setFields:PFSignUpFieldsDefault];
+        
+        [login setSignUpController:signup];
+        [self presentViewController:login animated:YES completion:nil];
+        
+    }else{
+        
+        ProfileViewController *profile = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:profile];
+        [self presentViewController:navi animated:YES completion:nil];
+    }
+}
+
+- (IBAction)mapViewAction:(id)sender {
+    
+    if (![PFUser currentUser]) {
+        
+        LoginViewController *login = [[LoginViewController alloc] init];
+        login.delegate = self;
+        
+        [login setFields:PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton];
+        
+        SignupViewController *signup = [[SignupViewController alloc] init];
+        [signup setDelegate:self];
+        [signup setFields:PFSignUpFieldsDefault];
+        
+        [login setSignUpController:signup];
+        [self presentViewController:login animated:YES completion:nil];
+        
+    }else{
+        
+        MapViewController *map = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:map];
+        [self presentViewController:navi animated:YES completion:nil];
+    }
+    
+}
+
+- (IBAction)searchViewAction:(id)sender {
+    
+    if (![PFUser currentUser]) {
+        
+        LoginViewController *login = [[LoginViewController alloc] init];
+        login.delegate = self;
+        
+        [login setFields:PFLogInFieldsUsernameAndPassword | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton];
+        
+        SignupViewController *signup = [[SignupViewController alloc] init];
+        [signup setDelegate:self];
+        [signup setFields:PFSignUpFieldsDefault];
+        
+        [login setSignUpController:signup];
+        [self presentViewController:login animated:YES completion:nil];
+        
+    }else{
+        
+        SearchViewController *search = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:search];
+        [self presentViewController:navi animated:YES completion:nil];
+    }
+
+}
+
+-(void)showlistView{
+
+    ListViewController *list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:list];
+    [self presentViewController:navi animated:YES completion:nil];
+
 }
 
 #pragma mark - PFLogInViewControllerDelegate

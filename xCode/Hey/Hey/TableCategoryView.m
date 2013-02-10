@@ -146,7 +146,7 @@
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
+/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"NextPage";
     
@@ -170,7 +170,7 @@
 
     
     return cell;
-}
+} */
 
 
 

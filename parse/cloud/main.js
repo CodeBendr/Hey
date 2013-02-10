@@ -13,7 +13,8 @@ Parse.Cloud.define("getMedia", function(request, response) {
         media = {
 		  caption:results[i].get("caption"),
 		  category:results[i].get("category"),
-		  location:results[i].get("location")
+		  location:results[i].get("location"),
+		  date:results[i].get("createdBy")
 		  };
 		  
 		  objects.push(media);

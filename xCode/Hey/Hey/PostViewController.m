@@ -15,6 +15,7 @@
 #import "NavigationBarButtons.h"
 #import "NSString+Manipulation.h"
 #import "ListViewController.h"
+#import "MenuViewController.h"
 
 @interface PostViewController ()
 
@@ -72,6 +73,14 @@
     
    // self.viewIndicator.layer.cornerRadius = 8.0;
     
+    //create the add button and add it to the right side of the navigator
+    UIButton *btnList = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 97, 28)];
+    [btnList setImage:[UIImage imageNamed:@"btnBack"] forState:UIControlStateNormal];
+    [btnList addTarget:self action:@selector(closeMenu:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *btnListLeft = [[UIBarButtonItem alloc] initWithCustomView:btnList];
+    
+    self.navigationItem.leftBarButtonItem = btnListLeft;
+    
     
      NavigationBarButtons *navi = [NavigationBarButtons alloc];
     [navi navigationBarButtonsForControllers:self];
@@ -86,6 +95,14 @@
      [self.txtCategory setFont:[UIFont fontWithName:@"Lato-Light" size:18]];
      [self.txtPostCharAtOne setFont:[UIFont fontWithName:@"Lato-Light" size:21]];
      [self.txtLocationCharAtOne setFont:[UIFont fontWithName:@"Lato-Light" size:21]];
+    [self.txtChooseImage setFont:[UIFont fontWithName:@"Lato-Regular" size:20]];
+     [self.txtSavingPost setFont:[UIFont fontWithName:@"Lato-Regular" size:20]];
+    
+}
+
+- (void)closeMenu:(id)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -197,9 +214,8 @@
                             
                                 [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
                                 
-                                
-                                    ListViewController *list = [[ListViewController alloc] initWithNibName:@"ListViewController" bundle:nil];
-                                    [super presentViewController:list animated:YES completion:nil];
+                                   //  MenuViewController *menu = (MenuViewController*)self.parentViewController.parentViewController;
+                                    [self performSelector:@selector(showListView) withObject:self];
                                     
                                     
                                 }];
@@ -620,6 +636,8 @@
     
     NSMutableString * firstCharacters = [NSMutableString string];
     NSArray * words = [character componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *fword = [words objectAtIndex:0];
+    words  = [fword componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     for (NSString * word in words) {
         
@@ -635,7 +653,12 @@
 
 
 
+-(void)showListView{
 
+     MenuViewController *menu = (MenuViewController*)self.parentViewController.parentViewController.parentViewController;
+    [menu showlistView];
+
+}
 
 
 

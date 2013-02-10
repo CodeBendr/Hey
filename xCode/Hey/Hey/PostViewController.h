@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *txtChooseImage;
 @property (weak, nonatomic) IBOutlet UILabel *txtPostCharAtOne;
 @property (weak, nonatomic) IBOutlet UILabel *txtLocationCharAtOne;
+@property (weak, nonatomic) IBOutlet UILabel *txtSavingPost;
 
 @property (strong, nonatomic) LocationViewController *locationController;
 @property (strong, nonatomic) CategoryViewController *categoryController;
