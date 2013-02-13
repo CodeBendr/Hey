@@ -1,13 +1,19 @@
 //
 //  SearchViewController.h
-//  Hey
+//  Geolocations
 //
-//  Created by CodeBender on 8/13/12.
-//  Copyright (c) 2012 Digital Benders. All rights reserved.
+//  Created by Héctor Ramos on 8/16/12.
+//  Copyright (c) 2012 Parse, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController <MKMapViewDelegate>
+
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet UISlider *slider;
+
+- (void)setInitialLocation:(CLLocation *)aLocation;
+- (IBAction)valueChangedEvent:(id)sender;
 
 @end

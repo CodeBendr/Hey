@@ -146,7 +146,7 @@
                              fileName:@"heyImage"];
         }
         
-        [self presentModalViewController:mailVC animated:YES];
+        [self presentViewController:mailVC animated:YES completion:nil];
     }
     else
     {
@@ -156,9 +156,9 @@
 
 - (void)sendTweet {
     
-    if([TWTweetComposeViewController canSendTweet]){
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
         
-        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [tweetSheet setInitialText:self.titleString];
         
         if(self.imgDetail){
@@ -172,14 +172,14 @@
          //   [tweetSheet addURL:[NSURL URLWithString:self.urlString]];
      //   }
         
-        tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result){
+        tweetSheet.completionHandler = ^(SLComposeViewControllerResult result){
             
-            if(result == TWTweetComposeViewControllerResultCancelled){
+            if(result == SLComposeViewControllerResultCancelled){
                 
-                [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"Tweet Cancelled");
                 
-            }else if (result == TWTweetComposeViewControllerResultDone) {
+            }else if (result == SLComposeViewControllerResultDone) {
                 
                 [self dismissViewControllerAnimated:YES completion:^(void){
                 
@@ -191,12 +191,58 @@
             }
          };
         
-        [self presentModalViewController:tweetSheet animated:YES];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
         
     }
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
+}
+
+
+- (void)sendFacebookPost {
+    
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
+        
+        SLComposeViewController *fbSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [fbSheet setInitialText:self.titleString];
+        
+        if(self.imgDetail){
+            
+            [fbSheet addImage:self.imgDetail.image];
+        }
+        
+        fbSheet.completionHandler = ^(SLComposeViewControllerResult result){
+            
+            if(result == SLComposeViewControllerResultCancelled){
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                NSLog(@"Facebook Post Cancelled");
+                
+            }else if (result == SLComposeViewControllerResultDone) {
+                
+                [self dismissViewControllerAnimated:YES completion:^(void){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hey! Facebook Post Sent" message:@"Facebook Post Sent Successfully" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    
+                    [alert show];
+                    
+                }];
+            }
+        };
+        
+        [self presentViewController:fbSheet animated:YES completion:nil];
+        
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You can't send a facebook post right now, make sure your device has an internet connection and you have at least one facebook account setup"
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -305,7 +351,7 @@
         NSLog(@"Message Failed to Send!");
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -327,7 +373,7 @@
         
         NSLog(@"Mail Saved");
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

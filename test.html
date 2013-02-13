@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Hey Tester</title>
  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+ <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/1.7.2/moment.min.js"></script>
 <script type="text/javascript">
 
    function loader(){
@@ -16,12 +17,14 @@
 			  
 			  for(r in results) 
 			   
-			  document.writeln(results[r].caption + "  " + results[r].category + " " + results[r].location + "<br><br>") ;
+			/*  document.writeln(results[r].caption + "  " + results[r].category + " " + results[r].location + 
+			  Date(results[r].date) +"<br><br>") ;
+			 */
 			 
-		   
+			   var _d = results[r].date;
+			   console.log(moment(_d,"YYYY-MM-DDTHH:mm:ss.SSS"));
 			 
-			   
-			   },
+		       },
 		   error:function(e){
 			   
 			   document.writeln(e.message);

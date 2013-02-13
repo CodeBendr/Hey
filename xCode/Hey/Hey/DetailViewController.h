@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import <Twitter/Twitter.h>
+#import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 
 @interface DetailViewController : UIViewController <UIActionSheetDelegate,MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>

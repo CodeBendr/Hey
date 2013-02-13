@@ -126,11 +126,16 @@
 		A857ADC216B4C9BE00029196 /* navi_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A857ADC016B4C9BD00029196 /* navi_logo.png */; };
 		A857ADC316B4C9BE00029196 /* navi_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A857ADC116B4C9BD00029196 /* navi_logo@2x.png */; };
 		A857ADC616B4CA7B00029196 /* NavigationBarButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = A857ADC516B4CA7B00029196 /* NavigationBarButtons.m */; };
+		A85FEA5E16CAD51600F781BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85FEA5D16CAD51600F781BB /* Social.framework */; };
 		A874271D16B08FE6007FF90F /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A874271C16B08FE6007FF90F /* NSDate-Utilities.m */; };
 		A874272916B12266007FF90F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A874272716B12266007FF90F /* DetailViewController.m */; };
 		A874272A16B12266007FF90F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A874272816B12266007FF90F /* DetailViewController.xib */; };
 		A874273416B12ECA007FF90F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A874273316B12ECA007FF90F /* MessageUI.framework */; };
-		A874273616B12EE6007FF90F /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A874273516B12EE6007FF90F /* Twitter.framework */; };
+		A876A00716CAF6E60014D629 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A876A00016CAF48A0014D629 /* SearchViewController.m */; };
+		A876A01116CAF8D50014D629 /* GeoPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A876A00C16CAF8D50014D629 /* GeoPointAnnotation.m */; };
+		A876A01216CAF8D50014D629 /* GeoQueryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A876A00E16CAF8D50014D629 /* GeoQueryAnnotation.m */; };
+		A876A01316CAF8D50014D629 /* CircleOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A876A01016CAF8D50014D629 /* CircleOverlay.m */; };
+		A876A01516CAF9170014D629 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A876A01416CAF9170014D629 /* MapKit.framework */; };
 		A883DB3916AB01F8005BF802 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB2F16AB01F8005BF802 /* Lato-Black.ttf */; };
 		A883DB3A16AB01F8005BF802 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB3016AB01F8005BF802 /* Lato-BlackItalic.ttf */; };
 		A883DB3B16AB01F8005BF802 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A883DB3116AB01F8005BF802 /* Lato-Bold.ttf */; };
@@ -146,7 +151,6 @@
 		A8A3339016C211820033B2C9 /* SearchView.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A3338E16C211820033B2C9 /* SearchView.png */; };
 		A8A3339116C211820033B2C9 /* SearchView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8A3338F16C211820033B2C9 /* SearchView@2x.png */; };
 		A8A3339216C212400033B2C9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A98CF16BF1CB300D1C58D /* MapViewController.m */; };
-		A8A3339316C2140E0033B2C9 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A98D516BF1CBA00D1C58D /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -285,8 +289,6 @@
 		A82A98D116BF1CB500D1C58D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		A82A98D216BF1CB700D1C58D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		A82A98D316BF1CB800D1C58D /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		A82A98D416BF1CB800D1C58D /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		A82A98D516BF1CBA00D1C58D /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A82A98D616BF1CBE00D1C58D /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		A82A98DD16C0B45100D1C58D /* profileView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profileView@2x.png"; path = "../../../PNG/Assets/profileView@2x.png"; sourceTree = "<group>"; };
 		A82A98DE16C0B45100D1C58D /* profileView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profileView.png; path = ../../../PNG/Assets/profileView.png; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		A857ADC116B4C9BD00029196 /* navi_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navi_logo@2x.png"; path = "../../../PNG/Assets/navi_logo@2x.png"; sourceTree = "<group>"; };
 		A857ADC416B4CA7B00029196 /* NavigationBarButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarButtons.h; sourceTree = "<group>"; };
 		A857ADC516B4CA7B00029196 /* NavigationBarButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarButtons.m; sourceTree = "<group>"; };
+		A85FEA5D16CAD51600F781BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A874271B16B08FE6007FF90F /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
 		A874271C16B08FE6007FF90F /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		A874272416B090C8007FF90F /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
@@ -312,7 +315,15 @@
 		A874272716B12266007FF90F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A874272816B12266007FF90F /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		A874273316B12ECA007FF90F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		A874273516B12EE6007FF90F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		A876A00016CAF48A0014D629 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		A876A00116CAF48A0014D629 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		A876A00B16CAF8D50014D629 /* GeoPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoPointAnnotation.h; sourceTree = "<group>"; };
+		A876A00C16CAF8D50014D629 /* GeoPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoPointAnnotation.m; sourceTree = "<group>"; };
+		A876A00D16CAF8D50014D629 /* GeoQueryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoQueryAnnotation.h; sourceTree = "<group>"; };
+		A876A00E16CAF8D50014D629 /* GeoQueryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoQueryAnnotation.m; sourceTree = "<group>"; };
+		A876A00F16CAF8D50014D629 /* CircleOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleOverlay.h; sourceTree = "<group>"; };
+		A876A01016CAF8D50014D629 /* CircleOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleOverlay.m; sourceTree = "<group>"; };
+		A876A01416CAF9170014D629 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A883DB2F16AB01F8005BF802 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Black.ttf"; path = "../../../Fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
 		A883DB3016AB01F8005BF802 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-BlackItalic.ttf"; path = "../../../Fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A883DB3116AB01F8005BF802 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../../../Fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -334,7 +345,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A874273616B12EE6007FF90F /* Twitter.framework in Frameworks */,
+				A876A01516CAF9170014D629 /* MapKit.framework in Frameworks */,
+				A85FEA5E16CAD51600F781BB /* Social.framework in Frameworks */,
 				A874273416B12ECA007FF90F /* MessageUI.framework in Frameworks */,
 				A803228416392443003CBE39 /* CoreLocation.framework in Frameworks */,
 				A803224616385BB8003CBE39 /* AdSupport.framework in Frameworks */,
@@ -361,6 +373,7 @@
 		A80321B416385492003CBE39 = {
 			isa = PBXGroup;
 			children = (
+				A876A01416CAF9170014D629 /* MapKit.framework */,
 				A80321C916385492003CBE39 /* Hey */,
 				A80321C216385492003CBE39 /* Frameworks */,
 				A80321C016385492003CBE39 /* Products */,
@@ -378,7 +391,7 @@
 		A80321C216385492003CBE39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A874273516B12EE6007FF90F /* Twitter.framework */,
+				A85FEA5D16CAD51600F781BB /* Social.framework */,
 				A874273316B12ECA007FF90F /* MessageUI.framework */,
 				A8032317163A863C003CBE39 /* Parse.framework */,
 				A803228316392443003CBE39 /* CoreLocation.framework */,
@@ -450,6 +463,8 @@
 			children = (
 				A874272616B12265007FF90F /* DetailViewController.h */,
 				A874272716B12266007FF90F /* DetailViewController.m */,
+				A876A00016CAF48A0014D629 /* SearchViewController.m */,
+				A876A00116CAF48A0014D629 /* SearchViewController.h */,
 				A874272816B12266007FF90F /* DetailViewController.xib */,
 				A8032370163E6727003CBE39 /* ListViewController.h */,
 				A8032371163E6728003CBE39 /* ListViewController.m */,
@@ -457,14 +472,12 @@
 				A803227916392380003CBE39 /* LocationViewController.h */,
 				A803227A16392380003CBE39 /* LocationViewController.m */,
 				A82A98CE16BF1CB000D1C58D /* MapViewController.h */,
+				A82A98D616BF1CBE00D1C58D /* SearchViewController.xib */,
 				A82A98CF16BF1CB300D1C58D /* MapViewController.m */,
 				A82A98D016BF1CB400D1C58D /* MapViewController.xib */,
 				A82A98D116BF1CB500D1C58D /* ProfileViewController.h */,
 				A82A98D216BF1CB700D1C58D /* ProfileViewController.m */,
 				A82A98D316BF1CB800D1C58D /* ProfileViewController.xib */,
-				A82A98D416BF1CB800D1C58D /* SearchViewController.h */,
-				A82A98D516BF1CBA00D1C58D /* SearchViewController.m */,
-				A82A98D616BF1CBE00D1C58D /* SearchViewController.xib */,
 				A803227B16392380003CBE39 /* LocationViewController.xib */,
 				A803227C16392380003CBE39 /* CategoryViewController.h */,
 				A803227D16392380003CBE39 /* CategoryViewController.m */,
@@ -576,6 +589,12 @@
 		A80322F6163A7FFF003CBE39 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A876A00B16CAF8D50014D629 /* GeoPointAnnotation.h */,
+				A876A00C16CAF8D50014D629 /* GeoPointAnnotation.m */,
+				A876A00D16CAF8D50014D629 /* GeoQueryAnnotation.h */,
+				A876A00E16CAF8D50014D629 /* GeoQueryAnnotation.m */,
+				A876A00F16CAF8D50014D629 /* CircleOverlay.h */,
+				A876A01016CAF8D50014D629 /* CircleOverlay.m */,
 				A82A98E116C0B97100D1C58D /* CustomAnnotationView.h */,
 				A82A98E216C0B97100D1C58D /* CustomAnnotationView.m */,
 				A82A98E316C0B97100D1C58D /* AnnotationButton.h */,
@@ -850,7 +869,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8A3339316C2140E0033B2C9 /* SearchViewController.m in Sources */,
+				A876A00716CAF6E60014D629 /* SearchViewController.m in Sources */,
 				A8A3339216C212400033B2C9 /* MapViewController.m in Sources */,
 				A82A98C116BE2E6900D1C58D /* TableCategoryView.m in Sources */,
 				A8032319163A8684003CBE39 /* PostViewController.m in Sources */,
@@ -876,6 +895,9 @@
 				A857ADC616B4CA7B00029196 /* NavigationBarButtons.m in Sources */,
 				A82A98C516BE532000D1C58D /* NSString+Manipulation.m in Sources */,
 				A82A98D916BF1CC100D1C58D /* ProfileViewController.m in Sources */,
+				A876A01116CAF8D50014D629 /* GeoPointAnnotation.m in Sources */,
+				A876A01216CAF8D50014D629 /* GeoQueryAnnotation.m in Sources */,
+				A876A01316CAF8D50014D629 /* CircleOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

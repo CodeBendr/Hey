@@ -1,63 +1,206 @@
 //
 //  SearchViewController.m
-//  Hey
+//  Geolocations
 //
-//  Created by CodeBender on 8/13/12.
-//  Copyright (c) 2012 Digital Benders. All rights reserved.
+//  Created by Héctor Ramos on 8/16/12.
+//  Copyright (c) 2012 Parse, Inc. All rights reserved.
 //
+
+#import <Parse/Parse.h>
 
 #import "SearchViewController.h"
-#import "NavigationBarButtons.h"
+#import "CircleOverlay.h"
+#import "GeoPointAnnotation.h"
+#import "GeoQueryAnnotation.h"
+
+enum PinAnnotationTypeTag {
+    PinAnnotationTypeTagGeoPoint = 0,
+    PinAnnotationTypeTagGeoQuery = 1
+};
 
 @interface SearchViewController ()
-
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic, assign) CLLocationDistance radius;
+@property (nonatomic, strong) CircleOverlay *targetOverlay;
 @end
 
 @implementation SearchViewController
+@synthesize location = _location;
+@synthesize radius = _radius;
+@synthesize targetOverlay = _targetOverlay;
+@synthesize mapView = _mapView;
+@synthesize slider = _slider;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
-- (void)closeMenu:(id)sender{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
+#pragma mark - UIViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    //create the add button and add it to the right side of the navigator
-    //create the add button and add it to the left side of the navigator
-    UIButton *btnList = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 39, 31)];
-    [btnList setImage:[UIImage imageNamed:@"btnListGlobal.png"] forState:UIControlStateNormal];
-    [btnList addTarget:self action:@selector(closeMenu:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *btnListLeft = [[UIBarButtonItem alloc] initWithCustomView:btnList];
-    
-    self.navigationItem.leftBarButtonItem  = btnListLeft;
-    
-    NavigationBarButtons *navi = [NavigationBarButtons alloc];
-    [navi navigationBarButtonsForControllers:self];
+    [self.mapView setRegion:MKCoordinateRegionMake(self.location.coordinate, MKCoordinateSpanMake(0.05, 0.05))];
+    [self configureOverlay];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
+#pragma mark - MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *GeoPointAnnotationIdentifier = @"RedPinAnnotation";
+    static NSString *GeoQueryAnnotationIdentifier = @"PurplePinAnnotation";
+    
+    if ([annotation isKindOfClass:[GeoQueryAnnotation class]]) {
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView
+                                dequeueReusableAnnotationViewWithIdentifier:GeoQueryAnnotationIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:GeoQueryAnnotationIdentifier];
+            annotationView.tag = PinAnnotationTypeTagGeoQuery;
+            annotationView.canShowCallout = YES;
+            annotationView.pinColor = MKPinAnnotationColorPurple;
+            annotationView.animatesDrop = NO;
+            annotationView.draggable = YES;
+        }
+        
+        return annotationView;
+    } else if ([annotation isKindOfClass:[GeoPointAnnotation class]]) {
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView
+                                dequeueReusableAnnotationViewWithIdentifier:GeoPointAnnotationIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:GeoPointAnnotationIdentifier];
+            annotationView.tag = PinAnnotationTypeTagGeoPoint;
+            annotationView.canShowCallout = YES;
+            annotationView.pinColor = MKPinAnnotationColorRed;
+            annotationView.animatesDrop = YES;
+            annotationView.draggable = NO;
+        }
+        
+        return annotationView;
+    } 
+    
+    return nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    static NSString *CircleOverlayIdentifier = @"Circle";
+    
+    if ([overlay isKindOfClass:[CircleOverlay class]]) {
+        CircleOverlay *circleOverlay = (CircleOverlay *)overlay;
+
+        MKCircleView *annotationView =
+        (MKCircleView *)[mapView dequeueReusableAnnotationViewWithIdentifier:CircleOverlayIdentifier];
+        
+        if (!annotationView) {
+            MKCircle *circle = [MKCircle
+                                circleWithCenterCoordinate:circleOverlay.coordinate
+                                radius:circleOverlay.radius];
+            annotationView = [[MKCircleView alloc] initWithCircle:circle];
+        }
+
+        if (overlay == self.targetOverlay) {
+            annotationView.fillColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.3f];
+            annotationView.strokeColor = [UIColor redColor];
+            annotationView.lineWidth = 1.0f;
+        } else {
+            annotationView.fillColor = [UIColor colorWithWhite:0.3f alpha:0.3f];
+            annotationView.strokeColor = [UIColor purpleColor];
+            annotationView.lineWidth = 2.0f;
+        }
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    if (![view isKindOfClass:[MKPinAnnotationView class]] || view.tag != PinAnnotationTypeTagGeoQuery) {
+        return;
+    }
+    
+    if (MKAnnotationViewDragStateStarting == newState) {
+        [self.mapView removeOverlays:[self.mapView overlays]];
+    } else if (MKAnnotationViewDragStateNone == newState && MKAnnotationViewDragStateEnding == oldState) {
+        MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)view;
+        GeoQueryAnnotation *geoQueryAnnotation = (GeoQueryAnnotation *)pinAnnotationView.annotation;
+        self.location = [[CLLocation alloc] initWithLatitude:geoQueryAnnotation.coordinate.latitude longitude:geoQueryAnnotation.coordinate.longitude];
+        [self configureOverlay];
+    }
+}
+
+#pragma mark - SearchViewController
+
+- (void)setInitialLocation:(CLLocation *)aLocation {
+    self.location = aLocation;
+    self.radius = 1000;
+}
+
+- (IBAction)valueChangedEvent:(UISlider *)aSlider {
+    
+    self.radius = aSlider.value;
+    
+    if (self.targetOverlay) {
+        [self.mapView removeOverlay:self.targetOverlay];
+    }
+    
+    self.targetOverlay = [[CircleOverlay alloc] initWithCoordinate:self.location.coordinate radius:self.radius];
+    [self.mapView addOverlay:self.targetOverlay];
+}
+
+
+#pragma mark - ()
+
+- (IBAction)slider_DidTouchUp:(UISlider *)aSlider {
+    if (self.targetOverlay) {
+        [self.mapView removeOverlay:self.targetOverlay];
+    }
+
+    [self configureOverlay];
+}
+
+- (IBAction)slider_ValueChanged:(UISlider *)aSlider {
+  
+}
+
+- (void)configureOverlay {
+    if (self.location) {
+        [self.mapView removeAnnotations:[self.mapView annotations]];        
+        [self.mapView removeOverlays:[self.mapView overlays]];
+        
+        CircleOverlay *overlay = [[CircleOverlay alloc] initWithCoordinate:self.location.coordinate radius:self.radius];
+        [self.mapView addOverlay:overlay];
+        
+        GeoQueryAnnotation *annotation = [[GeoQueryAnnotation alloc] initWithCoordinate:self.location.coordinate radius:self.radius];
+        [self.mapView addAnnotation:annotation];
+        
+        [self updateLocations];
+    }
+}
+
+- (void)updateLocations {
+    CGFloat kilometers = self.radius/1000.0f;
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Media"];
+    [query setLimit:1000];
+    [query whereKey:@"latlong"
+       nearGeoPoint:[PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude
+                                           longitude:self.location.coordinate.longitude]
+   withinKilometers:kilometers];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc]
+                                                          initWithObject:object];
+                [self.mapView addAnnotation:geoPointAnnotation];
+            }
+        }
+    }];
 }
 
 @end
